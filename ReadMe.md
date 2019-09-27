@@ -1,4 +1,15 @@
-# New Users of the CSG Model, Please Read!
+# Connected and Automated Vehicles Scenario Generation (CSG) Model
+
+
+The Connected and Automated Vehicles Scenario Generation (CSG) model is a system dynamics
+model. It was built by NREL and funded by the U.S. Department of Energy under the Systems
+and Modeling for Accelerated Research in Transportation (SMART) Mobility initiative. The
+purpose of the model is to simulate the “transitions from predominantly individual ownership
+of non-CAVs to various future scenarios of high connectivity/automation”(Bush, Vimmerstedt,
+and Gonder 2019).
+
+
+***New users of the CSG Model, please read the following:***
 
 
 ## Development
