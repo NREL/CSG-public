@@ -1,6 +1,11 @@
+# Stella Model
+
+The file [csg.stmx](csg.stmx) contains the [STELLA](https://www.iseesystems.com/store/products/) model for the CAVs Scenario Generator (CSG).
+
+
 # Calibrated Inputs
 
-The folder [calibration/](calibration/) contains calibrated inputs for the [STELLA](https://www.iseesystems.com/store/products/) model [csg.stmx](csg.stmx). By default, the calibration for the whole USA is active.  To select the calibration for an urban area, open the STELLA model and navigate to the `Model | Import` menu, deslect `USA.csv` in the second row of the import links and select the urban area of interest.
+The folder [calibration/](calibration/) contains calibrated inputs for the CSG. By default, the calibration for the whole USA is active.  To select the calibration for an urban area, open the STELLA model and navigate to the `Model | Import` menu, deslect `USA.csv` in the second row of the import links and select the urban area of interest.
 
 In addition to the default calibration for the USA, calibrations for the following urban area are available:
 
