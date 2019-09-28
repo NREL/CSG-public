@@ -86,19 +86,64 @@
 	</isee:time_formats>
 	<default_format/>
 	<data>
-		<export enabled="false" orientation="horizontal" resource="./stella-output.csv" interval="1" precomputed="false" isee:format="numbers">
-			<all/>
-		</export>
-		<export enabled="false" orientation="horizontal" resource="./utility initialization.xlsx" type="Excel" worksheet="exported from STELLA" precomputed="false" isee:format="numbers">
-			<table name="Utility Initialization" use_settings="true"/>
-		</export>
-		<export enabled="false" orientation="horizontal" resource="./calibration-out.csv" interval="current_time" precomputed="false" isee:format="numbers">
-			<all/>
-		</export>
-		<import enabled="false" isee:overwrite="true" orientation="horizontal" resource="./nhts-input.csv"/>
-		<import enabled="false" isee:overwrite="true" orientation="horizontal" resource="./utility initialization.xlsx" type="Excel" worksheet="for import to STELLA"/>
-		<import enabled="false" isee:overwrite="true" resource="./calibration-in.csv"/>
+		<export enabled="false" orientation="horizontal" resource="./stella-output.csv" interval="1" precomputed="false" isee:format="numbers"><all/></export>
 		<import enabled="false" isee:overwrite="false" orientation="horizontal" resource="./stella-input.csv"/>
+		<import enabled="true"  ieee:overwrite="true" resource="./calibration/USA.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Atlanta-Sandy Springs-Roswell, GA.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Austin-Round Rock, TX.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Baltimore-Columbia-Towson, MD.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Birmingham-Hoover, AL.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Boston-Cambridge-Newton, MA-NH.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Buffalo-Cheektowaga-Niagara Falls, NY.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Charlotte-Concord-Gastonia, NC-SC.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Chicago-Naperville-Elgin, IL-IN-WI.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Cincinnati, OH-KY-IN.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Cleveland-Elyria, OH.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Columbus, OH.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Dallas-Fort Worth-Arlington, TX.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Denver-Aurora-Lakewood, CO.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Detroit-Warren-Dearborn, MI.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Grand Rapids-Wyoming, MI.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Hartford-West Hartford-East Hartford, CT.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Houston-The Woodlands-Sugar Land, TX.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Indianapolis-Carmel-Anderson, IN.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Jacksonville, FL.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Kansas City, MO-KS.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Las Vegas-Henderson-Paradise, NV.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Los Angeles-Long Beach-Anaheim, CA.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Louisville-Jefferson County, KY-IN.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Memphis, TN-MS-AR.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Miami-Fort Lauderdale-West Palm Beach, FL.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Milwaukee-Waukesha-West Allis, WI.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Minneapolis-St. Paul-Bloomington, MN-WI.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Nashville-Davidson--Murfreesboro--Franklin, TN.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/New Orleans-Metairie, LA.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/New York-Newark-Jersey City, NY-NJ-PA.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Oklahoma City, OK.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Orlando-Kissimmee-Sanford, FL.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Philadelphia-Camden-Wilmington, PA-NJ-DE-MD.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Phoenix-Mesa-Scottsdale, AZ.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Pittsburgh, PA.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Portland-Vancouver-Hillsboro, OR-WA.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Providence-Warwick, RI-MA.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Raleigh, NC.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Richmond, VA.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Riverside-San Bernardino-Ontario, CA.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Rochester, NY.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Sacramento--Roseville--Arden-Arcade, CA.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Salt Lake City, UT.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/San Antonio-New Braunfels, TX.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/San Diego-Carlsbad, CA.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/San Francisco-Oakland-Hayward, CA.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/San Jose-Sunnyvale-Santa Clara, CA.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Seattle-Tacoma-Bellevue, WA.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/St. Louis, MO-IL.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Tampa-St. Petersburg-Clearwater, FL.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Virginia Beach-Norfolk-Newport News, VA-NC.csv"/>
+		<import enabled="false" ieee:overwrite="true" resource="./calibration/Washington-Arlington-Alexandria, DC-VA-MD-WV.csv"/>
+
+
+
 	</data>
 	<model_units>
 		<unit name="Dimensionless">
