@@ -6542,7 +6542,6 @@
 		</isee:extra_collection_variables>
 		<variables>
 			<stock name="Population">
-				<doc>https://www.census.gov/popclock/</doc>
 				<dimensions>
 					<dim name="Cohort"/>
 					<dim name="Concept"/>
@@ -6554,6 +6553,13 @@ initial_population</eqn>
 				<inflow>population_shift</inflow>
 				<non_negative/>
 				<units>traveler</units>
+				<doc>DEFINITION: Population cohorts.
+
+UNITS: traveler
+
+TYPE: 
+
+COMMENTS: </doc>
 			</stock>
 			<stock name="Vehicles">
 				<dimensions>
@@ -6567,6 +6573,13 @@ initial_population</eqn>
 				<outflow>vehicle_scrappage</outflow>
 				<non_negative/>
 				<units>vehicle</units>
+				<doc>DEFINITION: Total number of vehicles.
+
+UNITS: vehicle
+
+TYPE: 
+
+COMMENTS: </doc>
 			</stock>
 			<stock name="Purposes">
 				<dimensions>
@@ -6580,9 +6593,15 @@ initial_population</eqn>
 				<inflow>purpose_shift</inflow>
 				<non_negative/>
 				<units>purpose/week</units>
+				<doc>DEFINITION: Distribution of purposes.
+
+UNITS: purpose/week
+
+TYPE: 
+
+COMMENTS: </doc>
 			</stock>
 			<stock name="Travel Distance">
-				<doc>http://nhts.ornl.gov/2009/pub/stt.pdf, p.13 pdf</doc>
 				<dimensions>
 					<dim name="Cohort"/>
 					<dim name="Concept"/>
@@ -6592,6 +6611,13 @@ initial_population</eqn>
 				<inflow>distance_traveling_travelers</inflow>
 				<non_negative/>
 				<units>travelermile</units>
+				<doc>DEFINITION: Cumulative distance traveled
+
+UNITS: travelermile
+
+TYPE: 
+
+COMMENTS: http://nhts.ornl.gov/2009/pub/stt.pdf, p.13 pdf</doc>
 			</stock>
 			<stock name="Travel Time">
 				<dimensions>
@@ -6603,6 +6629,13 @@ initial_population</eqn>
 				<inflow>time_traveling</inflow>
 				<non_negative/>
 				<units>travelerhour</units>
+				<doc>DEFINITION: Cumulative traveler-time traveled.
+
+UNITS: travelerhour
+
+TYPE: 
+
+COMMENTS: </doc>
 			</stock>
 			<group name="Population Sector" run="false">
 				<entity name="Population_Total"/>
@@ -6798,6 +6831,13 @@ initial_population</eqn>
 				</dimensions>
 				<eqn>distance_requirement[Cohort,Concept,Purpose]</eqn>
 				<units>travelermile/purpose</units>
+				<doc>DEFINITION: Average distance traveled to accomplish a purpose, corrected for infrastructure and market effects.
+
+UNITS: travelermile/purpose
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="time intensity">
 				<dimensions>
@@ -6809,6 +6849,13 @@ initial_population</eqn>
 * market_effect_on_time
 * infrastructure_effect_on_time[Cohort,Concept]</eqn>
 				<units>travelerhour/purpose</units>
+				<doc>DEFINITION: Average time traveled to accomplish a purpose, corrected for infrastructure and market effects.
+
+UNITS: travelerhour/purpose
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="purpose tendency">
 				<dimensions>
@@ -6817,6 +6864,13 @@ initial_population</eqn>
 				</dimensions>
 				<eqn>initial_purpose_tendency[Cohort,Purpose]/initial_cohort_tendency_traveler[Cohort]</eqn>
 				<units>purpose/traveler/week</units>
+				<doc>DEFINITION: Long-term distribution of trip purposes.
+
+UNITS: purpose/traveler/week
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="purpose status">
 				<dimensions>
@@ -6828,6 +6882,13 @@ initial_population</eqn>
 /
 Population[Cohort,Concept]</eqn>
 				<units>purpose/traveler/week</units>
+				<doc>DEFINITION: Purposes normalized by population.
+
+UNITS: purpose/traveler/week
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="travel distance per traveler">
 				<dimensions>
@@ -6839,6 +6900,13 @@ Population[Cohort,Concept]</eqn>
 THEN distance_traveling_travelers[Cohort,Concept,Purpose] / Population[Cohort,Concept]
 ELSE 0</eqn>
 				<units>travelermile/traveler/year</units>
+				<doc>DEFINITION: Average systemwide distance traveled per traveler.
+
+UNITS: travelermile/traveler/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="travel time per traveler">
 				<dimensions>
@@ -6849,6 +6917,13 @@ ELSE 0</eqn>
 THEN time_traveling[Cohort,Concept,Work] / Population[Cohort,Concept]
 ELSE 0</eqn>
 				<units>travelerhour/traveler/year</units>
+				<doc>DEFINITION: Average travel time.
+
+UNITS: travelerhour/traveler/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="travel distance per time">
 				<dimensions>
@@ -6860,6 +6935,13 @@ ELSE 0</eqn>
 THEN distance_traveling_travelers[Cohort,Concept,Purpose] / time_traveling[Cohort,Concept,Purpose]
 ELSE 0</eqn>
 				<units>travelermile/travelerhour</units>
+				<doc>DEFINITION: Average systemwide travel speed.
+
+UNITS: travelermile/travelerhour
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<group name="Safety Sector" run="false">
 				<entity name="initial_travel_distance"/>
@@ -6890,6 +6972,13 @@ ELSE 0</eqn>
 				</dimensions>
 				<eqn>1</eqn>
 				<units>dollars</units>
+				<doc>DEFINITION: Systemwide safety benefit from vehicle concept.
+
+UNITS: dollars
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<aux name="net safety benefit">
 				<dimensions>
@@ -6899,26 +6988,68 @@ ELSE 0</eqn>
 - vehicle_cost
 - infrastructure_cost</eqn>
 				<units>dollars</units>
+				<doc>DEFINITION: Overall monetized safety benefit.
+
+UNITS: dollars
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="infrastructure cost">
 				<eqn>1</eqn>
 				<units>dollars</units>
+				<doc>DEFINITION: Total cost of infrastructure.
+
+UNITS: dollars
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<aux name="vehicle cost">
 				<eqn>1</eqn>
 				<units>dollars</units>
+				<doc>DEFINITION: Total cost of vehicles.
+
+UNITS: dollars
+
+TYPE: 
+
+COMMENTS: Calculated from data provided by Victoria Transport Policy Institute (www.vtpi.org)</doc>
 			</aux>
 			<aux name="safety NPV">
 				<eqn>1</eqn>
 				<units>dollars</units>
+				<doc>DEFINITION: Net-present-value of monetized safety benefit.
+
+UNITS: dollars
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="L1 start">
 				<eqn>2100</eqn>
 				<units>year</units>
+				<doc>DEFINITION: Start of L1 R&amp;D.
+
+UNITS: year
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<aux name="L4 start">
 				<eqn>2100</eqn>
 				<units>year</units>
+				<doc>DEFINITION: Start of L4 R&amp;D.
+
+UNITS: year
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<aux name="concept start schedule">
 				<dimensions>
@@ -6985,6 +7116,13 @@ ELSE 0</eqn>
 					<eqn>STARTTIME</eqn>
 				</element>
 				<units>year</units>
+				<doc>DEFINITION: When R&amp;D begins for a vehicle concept.
+
+UNITS: year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<flow name="population trend">
 				<dimensions>
@@ -6996,14 +7134,35 @@ ELSE 0</eqn>
 * cohort_tendency[Cohort,Concept]</eqn>
 				<non_negative/>
 				<units>traveler/year</units>
+				<doc>DEFINITION: Net change in population.
+
+UNITS: traveler/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<aux name="population growth rate">
 				<eqn>0.007</eqn>
 				<units>1/year</units>
+				<doc>DEFINITION: Rate of population growth.
+
+UNITS: 1/year
+
+TYPE: 
+
+COMMENTS: World Bank 2017</doc>
 			</aux>
 			<aux name="initial population">
 				<eqn>1e8</eqn>
 				<units>traveler</units>
+				<doc>DEFINITION: Initial population.
+
+UNITS: traveler
+
+TYPE: 
+
+COMMENTS: Analysis  of the  National Household Travel Survey (NHTS).  See example data-processing notebook.</doc>
 			</aux>
 			<aux name="Population by Concept">
 				<dimensions>
@@ -7011,6 +7170,13 @@ ELSE 0</eqn>
 				</dimensions>
 				<eqn>SUM(Population[*,Concept])</eqn>
 				<units>traveler</units>
+				<doc>DEFINITION: Total population.
+
+UNITS: traveler
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="Population by Cohort">
 				<dimensions>
@@ -7018,14 +7184,35 @@ ELSE 0</eqn>
 				</dimensions>
 				<eqn>SUM(Population[Cohort,*])</eqn>
 				<units>traveler</units>
+				<doc>DEFINITION: Total population.
+
+UNITS: traveler
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="Population Total">
 				<eqn>SUM(Population[*,*])</eqn>
 				<units>traveler</units>
+				<doc>DEFINITION: Total population.
+
+UNITS: traveler
+
+TYPE: 
+
+COMMENTS: Sum over population stock</doc>
 			</aux>
 			<aux name="cohort shift time">
 				<eqn>12</eqn>
 				<units>year</units>
+				<doc>DEFINITION: Average time for shifts in population cohorts.
+
+UNITS: year
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<aux name="population gap">
 				<dimensions>
@@ -7036,6 +7223,13 @@ ELSE 0</eqn>
 -
 Population[Cohort,Concept]</eqn>
 				<units>traveler</units>
+				<doc>DEFINITION: Discrepancy between long-term cohort distribution and current distribution.
+
+UNITS: traveler
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<flow name="population shift">
 				<dimensions>
@@ -7044,6 +7238,13 @@ Population[Cohort,Concept]</eqn>
 				</dimensions>
 				<eqn>population_gap[Cohort,Concept] / cohort_shift_time</eqn>
 				<units>traveler/year</units>
+				<doc>DEFINITION: Change in cohort distribution due to changes in population preferences.
+
+UNITS: traveler/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<aux name="initial cohort tendency">
 				<dimensions>
@@ -8551,6 +8752,13 @@ Population[Cohort,Concept]</eqn>
 					<eqn>1e-10</eqn>
 				</element>
 				<units>1</units>
+				<doc>DEFINITION: Initial distribution of cohorts.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: Analysis  of the Whole Traveler (WT) Survey &amp; National Household Travel Survey (NHTS).  See example data-processing notebook.</doc>
 			</aux>
 			<group name="Purpose Sector" run="false">
 				<entity name="purpose_tendency"/>
@@ -8581,6 +8789,13 @@ Population[Cohort,Concept]</eqn>
 * purpose_tendency[Cohort,Purpose]</eqn>
 				<non_negative/>
 				<units>purpose/week/year</units>
+				<doc>DEFINITION: Changes in purpose distribution due to population changes.
+
+UNITS: purpose/week/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<aux name="Purposes by Cohort">
 				<dimensions>
@@ -8589,6 +8804,13 @@ Population[Cohort,Concept]</eqn>
 				<eqn>SUM(Purposes[Cohort,*,*])
 / Population_Total</eqn>
 				<units>purpose/traveler/week</units>
+				<doc>DEFINITION: Total purposes.
+
+UNITS: purpose/traveler/week
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="Purposes by Concept">
 				<dimensions>
@@ -8597,6 +8819,13 @@ Population[Cohort,Concept]</eqn>
 				<eqn>SUM(Purposes[*,Concept,*])
 / Population_Total</eqn>
 				<units>purpose/traveler/week</units>
+				<doc>DEFINITION: Total purposes.
+
+UNITS: purpose/traveler/week
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="Purposes by Purpose">
 				<dimensions>
@@ -8605,10 +8834,24 @@ Population[Cohort,Concept]</eqn>
 				<eqn>SUM(Purposes[*,*,Purpose])
 / Population_Total</eqn>
 				<units>purpose/traveler/week</units>
+				<doc>DEFINITION: Total purposes.
+
+UNITS: purpose/traveler/week
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="Purposes Total">
 				<eqn>SUM(Purposes[*,*,*])</eqn>
 				<units>purpose/week</units>
+				<doc>DEFINITION: Total of Purposes.
+
+UNITS: purpose/week
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<flow name="tracking population shift">
 				<dimensions>
@@ -8622,6 +8865,13 @@ IF population_shift[Cohort,Concept] &gt; 0
 THEN purpose_tendency[Cohort,Purpose]
 ELSE traveleral_purpose[Cohort,Concept,Purpose]</eqn>
 				<units>purpose/week/year</units>
+				<doc>DEFINITION: Change in purpose distribution due to changes in population's preferences.
+
+UNITS: purpose/week/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<aux name="traveleral purpose">
 				<dimensions>
@@ -8633,6 +8883,13 @@ ELSE traveleral_purpose[Cohort,Concept,Purpose]</eqn>
 THEN Purposes[Cohort,Concept,Purpose] / Population[Cohort,Concept]
 ELSE 0</eqn>
 				<units>purpose/traveler/week</units>
+				<doc>DEFINITION: Travel purpose distribution per traveler.
+
+UNITS: purpose/traveler/week
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<flow name="purpose shift">
 				<dimensions>
@@ -8644,10 +8901,24 @@ ELSE 0</eqn>
 / purpose_shift_time</eqn>
 				<non_negative/>
 				<units>purpose/week/year</units>
+				<doc>DEFINITION: Rate of change of purposes.
+
+UNITS: purpose/week/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<aux name="purpose shift time">
 				<eqn>10</eqn>
 				<units>year</units>
+				<doc>DEFINITION: Average time for shifts in purpose distribution.
+
+UNITS: year
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<aux name="purpose gap">
 				<dimensions>
@@ -8659,6 +8930,13 @@ ELSE 0</eqn>
 -
 Purposes[Cohort,Concept,Purpose]</eqn>
 				<units>purpose/week</units>
+				<doc>DEFINITION: Discrepancy between long-term distribution of purposes and the current distribution.
+
+UNITS: purpose/week
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<group name="Vehicle Sector" run="false">
 				<entity name="vehicle_gap"/>
@@ -10210,10 +10488,24 @@ Purposes[Cohort,Concept,Purpose]</eqn>
 					<eqn>1e-10</eqn>
 				</element>
 				<units>vehicle</units>
+				<doc>DEFINITION: Initial number of vehicles.
+
+UNITS: vehicle
+
+TYPE: 
+
+COMMENTS: 2016 APTA Fact Book Appendix A and B (https://www.apta.com/research-technical-resources/transit-statistics/public-transportation-fact-book/)</doc>
 			</aux>
 			<aux name="Vehicles Total">
 				<eqn>SUM(Vehicles[*,*])</eqn>
 				<units>vehicle</units>
+				<doc>DEFINITION: Total number of vehicles.
+
+UNITS: vehicle
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="Vehicles by Cohort">
 				<dimensions>
@@ -10221,6 +10513,13 @@ Purposes[Cohort,Concept,Purpose]</eqn>
 				</dimensions>
 				<eqn>SUM(Vehicles[Cohort,*])</eqn>
 				<units>vehicle</units>
+				<doc>DEFINITION: Total number of vehicles.
+
+UNITS: vehicle
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="Vehicles by Concept">
 				<dimensions>
@@ -10228,6 +10527,13 @@ Purposes[Cohort,Concept,Purpose]</eqn>
 				</dimensions>
 				<eqn>SUM(Vehicles[*,Concept])</eqn>
 				<units>vehicle</units>
+				<doc>DEFINITION: Total vehicles.
+
+UNITS: vehicle
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<flow name="vehicle scrappage">
 				<dimensions>
@@ -10238,10 +10544,24 @@ Purposes[Cohort,Concept,Purpose]</eqn>
 / vehicle_lifetime</eqn>
 				<non_negative/>
 				<units>vehicle/year</units>
+				<doc>DEFINITION: Scrappage rate for vehicles.
+
+UNITS: vehicle/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<aux name="vehicle lifetime">
 				<eqn>18</eqn>
 				<units>year</units>
+				<doc>DEFINITION: Vehicle lifetime.
+
+UNITS: year
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<flow name="vehicle purchases">
 				<dimensions>
@@ -10255,6 +10575,13 @@ vehicle_resale[Cohort,Concept]
 vehicle_upgrades[Cohort,Concept]</eqn>
 				<non_negative/>
 				<units>vehicle/year</units>
+				<doc>DEFINITION: Purchase rate of new vehicles.
+
+UNITS: vehicle/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<aux name="vehicle gap">
 				<dimensions>
@@ -10267,6 +10594,13 @@ Vehicles[Cohort,Concept]
 +
 vehicle_scrappage[Cohort,Concept] * vehicle_purchase_time</eqn>
 				<units>vehicle</units>
+				<doc>DEFINITION: Discrepancy between long-term vehicle distribution and current distribution.
+
+UNITS: vehicle
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="distance requirement">
 				<dimensions>
@@ -19275,6 +19609,13 @@ vehicle_scrappage[Cohort,Concept] * vehicle_purchase_time</eqn>
 					<eqn>1e-10</eqn>
 				</element>
 				<units>travelermile/purpose</units>
+				<doc>DEFINITION: Average distance traveled to accomplish a purpose.
+
+UNITS: travelermile/purpose
+
+TYPE: 
+
+COMMENTS: Analysis  of the Whole Traveler (WT) Survey &amp; National Household Travel Survey (NHTS).  See example data-processing notebook.</doc>
 			</aux>
 			<aux name="vehicle requirement">
 				<dimensions>
@@ -19285,6 +19626,13 @@ vehicle_scrappage[Cohort,Concept] * vehicle_purchase_time</eqn>
 / 
 vehicle_capacity[Cohort,Concept]</eqn>
 				<units>vehicle</units>
+				<doc>DEFINITION: Ideal distribution of vehicles.
+
+UNITS: vehicle
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="vehicle capacity">
 				<dimensions>
@@ -20792,10 +21140,24 @@ vehicle_capacity[Cohort,Concept]</eqn>
 					<eqn>1</eqn>
 				</element>
 				<units>vehiclemile/vehicle/year</units>
+				<doc>DEFINITION: Annual vehicle capacity.
+
+UNITS: vehiclemile/vehicle/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="vehicle purchase time">
 				<eqn>0.5</eqn>
 				<units>year</units>
+				<doc>DEFINITION: Lag in replacing salvaged vehicles.
+
+UNITS: year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<flow name="vehicle resale">
 				<dimensions>
@@ -20806,6 +21168,13 @@ vehicle_capacity[Cohort,Concept]</eqn>
 -
 vehicles_for_sale[Cohort,Concept])</eqn>
 				<units>vehicle/year</units>
+				<doc>DEFINITION: Resale rate for used vehicles.
+
+UNITS: vehicle/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<aux name="vehicle retention time">
 				<dimensions>
@@ -20813,6 +21182,13 @@ vehicles_for_sale[Cohort,Concept])</eqn>
 				</dimensions>
 				<eqn>1e10</eqn>
 				<units>year</units>
+				<doc>DEFINITION: Average time to resale of vehicles.
+
+UNITS: year
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<aux name="vehicles for sale">
 				<dimensions>
@@ -20822,6 +21198,13 @@ vehicles_for_sale[Cohort,Concept])</eqn>
 				<eqn>Vehicles[Cohort,Concept]
 / vehicle_retention_time[Cohort]</eqn>
 				<units>vehicle/year</units>
+				<doc>DEFINITION: Rate of vehicle sales.
+
+UNITS: vehicle/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="vehicle deficit">
 				<dimensions>
@@ -20830,6 +21213,13 @@ vehicles_for_sale[Cohort,Concept])</eqn>
 				</dimensions>
 				<eqn>MAX(vehicle_gap[Cohort, Concept],  1e-9)</eqn>
 				<units>vehicle</units>
+				<doc>DEFINITION: Discrepancy between actual and idea number of vehicles.
+
+UNITS: vehicle
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="vehicle surplus">
 				<dimensions>
@@ -20838,6 +21228,13 @@ vehicles_for_sale[Cohort,Concept])</eqn>
 				</dimensions>
 				<eqn>MAX(- vehicle_gap[Cohort, Concept],  0)</eqn>
 				<units>vehicle</units>
+				<doc>DEFINITION: Discrepancy between actual and idea number of vehicles.
+
+UNITS: vehicle
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="used vehicle purchases">
 				<dimensions>
@@ -20848,6 +21245,13 @@ vehicles_for_sale[Cohort,Concept])</eqn>
 * vehicle_deficit[Cohort,Concept]
 / SUM(vehicle_deficit[*, Concept])</eqn>
 				<units>vehicle/year</units>
+				<doc>DEFINITION: Rate of used vehicle purchases.
+
+UNITS: vehicle/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="vehicle upgrade time">
 				<dimensions>
@@ -20855,6 +21259,13 @@ vehicles_for_sale[Cohort,Concept])</eqn>
 				</dimensions>
 				<eqn>1e10</eqn>
 				<units>yr</units>
+				<doc>DEFINITION: Average time between hardware/software upgrades for vehicles.
+
+UNITS: yr
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<flow name="vehicle upgrades">
 				<dimensions>
@@ -20865,6 +21276,13 @@ vehicles_for_sale[Cohort,Concept])</eqn>
 -
 vehicles_for_upgrade[Cohort,Concept])</eqn>
 				<units>vehicle/year</units>
+				<doc>DEFINITION: Hardware/software upgrade rate for used vehicles.
+
+UNITS: vehicle/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<aux name="vehicles for upgrade">
 				<dimensions>
@@ -20875,6 +21293,13 @@ vehicles_for_upgrade[Cohort,Concept])</eqn>
 /
 vehicle_upgrade_time[Concept]</eqn>
 				<units>vehicle/year</units>
+				<doc>DEFINITION: Rate of vehicle upgrades.
+
+UNITS: vehicle/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="used vehicle upgrades">
 				<dimensions>
@@ -20889,6 +21314,13 @@ SUM(vehicles_for_upgrade[Cohort, *])
 / SUM(vehicle_deficit[Cohort,*])
 ELSE 0</eqn>
 				<units>vehicle/year</units>
+				<doc>DEFINITION: Rate of vehicle hardware or software upgrades.
+
+UNITS: vehicle/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<flow name="distance traveling travelers">
 				<dimensions>
@@ -20899,10 +21331,24 @@ ELSE 0</eqn>
 				<eqn>total_distance_requirement[Cohort,Concept,Purpose]</eqn>
 				<non_negative/>
 				<units>travelermile/year</units>
+				<doc>DEFINITION: Annual traveler-miles.
+
+UNITS: travelermile/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<aux name="weeks per year">
 				<eqn>52</eqn>
 				<units>week/year</units>
+				<doc>DEFINITION: Number of weeks per year.
+
+UNITS: week/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="total distance requirement">
 				<dimensions>
@@ -20914,6 +21360,13 @@ ELSE 0</eqn>
 * Purposes[Cohort,Concept,Purpose]
 * weeks_per_year</eqn>
 				<units>travelermile/year</units>
+				<doc>DEFINITION: Systemwide requirement for traveler-distance traveled.
+
+UNITS: travelermile/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<flow name="time traveling">
 				<dimensions>
@@ -20924,6 +21377,13 @@ ELSE 0</eqn>
 				<eqn>total_time_requirement[Cohort,Concept,Purpose]</eqn>
 				<non_negative/>
 				<units>travelerhour/year</units>
+				<doc>DEFINITION: Annual traveler-hours.
+
+UNITS: travelerhour/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<aux name="time requirement">
 				<dimensions>
@@ -29932,6 +30392,13 @@ ELSE 0</eqn>
 					<eqn>1e-10</eqn>
 				</element>
 				<units>travelerhour/purpose</units>
+				<doc>DEFINITION: Average time traveled to accomplish a purpose.
+
+UNITS: travelerhour/purpose
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="purpose speed">
 				<dimensions>
@@ -29943,6 +30410,13 @@ ELSE 0</eqn>
 /
 (time_requirement[Cohort,Concept,Purpose] + 1e-15)</eqn>
 				<units>travelermile/travelerhour</units>
+				<doc>DEFINITION: Average speed of travel for purposes.
+
+UNITS: travelermile/travelerhour
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="total time requirement">
 				<dimensions>
@@ -29954,10 +30428,24 @@ ELSE 0</eqn>
 * Purposes[Cohort,Concept,Purpose]
 * weeks_per_year</eqn>
 				<units>travelerhour/year</units>
+				<doc>DEFINITION: Systemwide requirement for time traveled.
+
+UNITS: travelerhour/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="market effect on time">
 				<eqn>1</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Congestion effect on travel time.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: Calibration</doc>
 			</aux>
 			<aux name="travel distance by cohort">
 				<dimensions>
@@ -29967,6 +30455,13 @@ ELSE 0</eqn>
 THEN SUM(distance_traveling_travelers[Cohort,*,*]) / SUM(Population[Cohort,*]) / weeks_per_year
 ELSE 0</eqn>
 				<units>travelermile/traveler/week</units>
+				<doc>DEFINITION: Weekly distance traveled.
+
+UNITS: travelermile/traveler/week
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="travel time by cohort">
 				<dimensions>
@@ -29976,6 +30471,13 @@ ELSE 0</eqn>
 THEN SUM(time_traveling[Cohort,*,*]) / SUM(Population[Cohort,*]) /weeks_per_year
 ELSE 0</eqn>
 				<units>travelerhour/traveler/week</units>
+				<doc>DEFINITION: Weekly time traveled.
+
+UNITS: travelerhour/traveler/week
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<group name="Energy Sector" run="false">
 				<entity name="fuel_efficiency_multiplier"/>
@@ -30051,6 +30553,13 @@ ELSE 0</eqn>
 					<eqn>0</eqn>
 				</element>
 				<units>$/vehicle</units>
+				<doc>DEFINITION: Initial value of vehicle capital cost reduction.
+
+UNITS: $/vehicle
+
+TYPE: 
+
+COMMENTS: L0 max standard vehicle cost is per IRS(https://www.irs.gov/pub/irs-drop/n-16-79.pdf). L1_Cooperative_Adaptive_Cruise_Control, L1_Urban_Eco_Signal_Control, L4_Urban_Freeway_Automated_Driving, L4_Intercity_Automated_Driving,  L4_Automated_Highway taken from (https://www.sciencedirect.com/science/article/pii/S0965856415300628). </doc>
 			</aux>
 			<aux name="concept operating\ninitial cost increment">
 				<dimensions>
@@ -30117,6 +30626,13 @@ ELSE 0</eqn>
 					<eqn>0</eqn>
 				</element>
 				<units>$/vehicle/year</units>
+				<doc>DEFINITION: Initial value of vehicle operating cost reduction.
+
+UNITS: $/vehicle/year
+
+TYPE: 
+
+COMMENTS: Tele, Non-Motorized - Victoria Transport Policy Institute (https://www.vtpi.org/tca/tca0501.pdf). L0 - Consumer Expenditure Surveys (https://www.bls.gov/cex/tables.htm). </doc>
 			</aux>
 			<aux name="capital recovery factor">
 				<eqn>perceived_real_interest_rate 
@@ -30126,14 +30642,35 @@ ELSE 0</eqn>
 - 1
 )</eqn>
 				<units>1/year</units>
+				<doc>DEFINITION: Factor for leveling costs.
+
+UNITS: 1/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="perceived real interest rate">
 				<eqn>0.03</eqn>
 				<units>1/year</units>
+				<doc>DEFINITION: Interest rate.
+
+UNITS: 1/year
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<aux name="one year">
 				<eqn>1</eqn>
 				<units>year</units>
+				<doc>DEFINITION: Constant for unit conversion.
+
+UNITS: year
+
+TYPE: 
+
+COMMENTS: Constant</doc>
 			</aux>
 			<stock name="Concept Capital Cost Increment">
 				<dimensions>
@@ -30147,6 +30684,13 @@ concept_capital_cost_increment_multiplier[Concept]</eqn>
 				<outflow>concept_capital_cost_reduction</outflow>
 				<non_negative/>
 				<units>$/vehicle</units>
+				<doc>DEFINITION: Vehicle capital cost.
+
+UNITS: $/vehicle
+
+TYPE: 
+
+COMMENTS: </doc>
 			</stock>
 			<stock name="Concept Operating Cost Increment">
 				<dimensions>
@@ -30156,6 +30700,13 @@ concept_capital_cost_increment_multiplier[Concept]</eqn>
 				<outflow>concept_operating_cost_reduction</outflow>
 				<non_negative/>
 				<units>$/vehicle/year</units>
+				<doc>DEFINITION: Vehicle operating cost.
+
+UNITS: $/vehicle/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</stock>
 			<aux name="concept levelized\ncost increment">
 				<dimensions>
@@ -30165,6 +30716,13 @@ concept_capital_cost_increment_multiplier[Concept]</eqn>
 +
 Concept_Operating_Cost_Increment[Concept]</eqn>
 				<units>$/vehicle/year</units>
+				<doc>DEFINITION: Levelized capital cost for vehicles.
+
+UNITS: $/vehicle/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<flow name="concept capital cost reduction">
 				<dimensions>
@@ -30175,6 +30733,13 @@ THEN Concept_Capital_Cost_Increment[Concept] * cost_reduction_rate
 ELSE 0</eqn>
 				<non_negative/>
 				<units>$/vehicle/year</units>
+				<doc>DEFINITION: Rate at which vehicle capital cost is reduced through learning-by-doing and economies of scale.
+
+UNITS: $/vehicle/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<flow name="concept operating cost reduction">
 				<dimensions>
@@ -30185,6 +30750,13 @@ THEN 0
 ELSE 0</eqn>
 				<non_negative/>
 				<units>$/vehicle/year/year</units>
+				<doc>DEFINITION: Rate at which vehicle operating cost is reduced through learning-by-doing and economies of scale.
+
+UNITS: $/vehicle/year/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<aux name="cost reduction rate">
 				<eqn>cost_reduction_rate_max
@@ -30192,6 +30764,13 @@ ELSE 0</eqn>
 /
 (1 + (EXP(-cost_reduction_rate_shape*(CAVs_RD_fraction-cost_reduction_rate_mid))))</eqn>
 				<units>1/year</units>
+				<doc>DEFINITION: Rate at which vehicle capital costs reduce.
+
+UNITS: 1/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="cohort weights">
 				<dimensions>
@@ -30201,10 +30780,24 @@ ELSE 0</eqn>
 /
 SUM(Population[*,*])</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Distribution of population among cohorts.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="never">
 				<eqn>STOPTIME + 1</eqn>
 				<units>year</units>
+				<doc>DEFINITION: Constant.
+
+UNITS: year
+
+TYPE: 
+
+COMMENTS: Constant</doc>
 			</aux>
 			<group name="Concept Availability Sector" run="false">
 				<entity name="L1_start"/>
@@ -30245,6 +30838,13 @@ SUM(Population[*,*])</eqn>
 				<outflow>completing_manufacturing</outflow>
 				<non_negative/>
 				<units>1</units>
+				<doc>DEFINITION: Indicator that manufacturing is blocking concept availability.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</stock>
 			<stock name="Waiting on Research">
 				<dimensions>
@@ -30256,6 +30856,13 @@ SUM(Population[*,*])</eqn>
 				<outflow>working_on_manufacturing</outflow>
 				<non_negative/>
 				<units>1</units>
+				<doc>DEFINITION: Indicator that R&amp;D is blocking concept availability.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</stock>
 			<stock name="Waiting on Consumer Interest">
 				<dimensions>
@@ -30267,6 +30874,13 @@ SUM(Population[*,*])</eqn>
 				<outflow>completing_consumer_interest</outflow>
 				<non_negative/>
 				<units>1</units>
+				<doc>DEFINITION: Indicator that consumer interest is insufficient for a concept to become available.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</stock>
 			<stock name="Concept Almost Available">
 				<dimensions>
@@ -31779,6 +32393,13 @@ SUM(Population[*,*])</eqn>
 				<inflow>completing_consumer_interest</inflow>
 				<non_negative/>
 				<units>1</units>
+				<doc>DEFINITION: Indicator that a concept is nearly available.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</stock>
 			<stock name="Waiting on Infrastructure">
 				<dimensions>
@@ -31790,6 +32411,13 @@ SUM(Population[*,*])</eqn>
 				<outflow>completing_infrastructure</outflow>
 				<non_negative/>
 				<units>1</units>
+				<doc>DEFINITION: Indicator that infrastructure is too immature for a concept to become available.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</stock>
 			<flow name="working on research">
 				<dimensions>
@@ -31801,6 +32429,13 @@ THEN PULSE(CAVs_RD_sufficient,  concept_start_schedule[Concept])
 ELSE 0</eqn>
 				<non_negative/>
 				<units>1/year</units>
+				<doc>DEFINITION: Rate at which R&amp;D proceeds.
+
+UNITS: 1/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<flow name="working on manufacturing">
 				<dimensions>
@@ -31812,6 +32447,13 @@ THEN PULSE(ready_for_manufacturing[Cohort, Concept], TIME)
 ELSE 0</eqn>
 				<non_negative/>
 				<units>1/year</units>
+				<doc>DEFINITION: Rate at which manufacturing capacity develops.
+
+UNITS: 1/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<flow name="working on infrastructure">
 				<dimensions>
@@ -31822,6 +32464,13 @@ ELSE 0</eqn>
 ELSE 0</eqn>
 				<non_negative/>
 				<units>1/year</units>
+				<doc>DEFINITION: Rate at which infrastructure matures.
+
+UNITS: 1/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<aux name="ready for manufacturing">
 				<dimensions>
@@ -31830,14 +32479,35 @@ ELSE 0</eqn>
 				</dimensions>
 				<eqn>DELAY(Waiting_on_Research[Cohort, Concept],  delay_to_start_manufacturing)</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Indicator that manufacturing can proceed.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="delay to start manufacturing">
 				<eqn>3</eqn>
 				<units>year</units>
+				<doc>DEFINITION: Delay in starting manufacturing after R&amp;D is complete.
+
+UNITS: year
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<aux name="delay to start regulatory approval">
 				<eqn>1</eqn>
 				<units>year</units>
+				<doc>DEFINITION: Delay in starting regulatory approval after R&amp;D is complete.
+
+UNITS: year
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<aux name="ready for infrastructure">
 				<dimensions>
@@ -31846,10 +32516,24 @@ ELSE 0</eqn>
 				</dimensions>
 				<eqn>DELAY(Waiting_on_Research[Cohort, Concept], delay_to_start_infrastructure_development)</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Indicator that infrastructure development can proceed.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="delay to start\ninfrastructure development">
 				<eqn>2</eqn>
 				<units>year</units>
+				<doc>DEFINITION: Delay in starting infrastructure investment after R&amp;D is complete.
+
+UNITS: year
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<flow name="completing manufacturing">
 				<dimensions>
@@ -31859,6 +32543,13 @@ ELSE 0</eqn>
 				<eqn>ready_for_availability[Cohort,Concept]</eqn>
 				<non_negative/>
 				<units>1/year</units>
+				<doc>DEFINITION: Rate at which manufacturing becomes sufficient for concept availability.
+
+UNITS: 1/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<flow name="completing infrastructure">
 				<dimensions>
@@ -31868,6 +32559,13 @@ ELSE 0</eqn>
 				<eqn>ready_for_availability[Cohort,Concept]</eqn>
 				<non_negative/>
 				<units>1/year</units>
+				<doc>DEFINITION: Rate at which infrastructure becomes sufficient for concept availability.
+
+UNITS: 1/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<flow name="completing consumer interest">
 				<dimensions>
@@ -31877,6 +32575,13 @@ ELSE 0</eqn>
 				<eqn>ready_for_availability[Cohort,Concept]</eqn>
 				<non_negative/>
 				<units>1/year</units>
+				<doc>DEFINITION: Rate at which consumer interest becomes sufficient for concept availability.
+
+UNITS: 1/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<aux name="ready for availability">
 				<dimensions>
@@ -31887,6 +32592,13 @@ ELSE 0</eqn>
 THEN PULSE(1,  TIME)
 ELSE 0</eqn>
 				<units>1/year</units>
+				<doc>DEFINITION: Indicator that concept can become available.
+
+UNITS: 1/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="maximum vehicles without underwriting">
 				<dimensions>
@@ -31953,6 +32665,13 @@ ELSE 0</eqn>
 					<eqn>0</eqn>
 				</element>
 				<units>vehicle</units>
+				<doc>DEFINITION: Maximum number of vehicles that manufacturers will ensure.
+
+UNITS: vehicle
+
+TYPE: 
+
+COMMENTS: FCEV experience from CARB AB 8 hydrogen annual reports.</doc>
 			</aux>
 			<aux name="minimum cumulative distance for underwriting">
 				<dimensions>
@@ -32019,10 +32738,24 @@ ELSE 0</eqn>
 					<eqn>0</eqn>
 				</element>
 				<units>vehiclemile</units>
+				<doc>DEFINITION: Minimum distance traveled for vehicles to be insurable by underwriters.
+
+UNITS: vehiclemile
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<aux name="initial insurance pool">
 				<eqn>INIT(insurance_payouts)* insurance_coverage</eqn>
 				<units>$</units>
+				<doc>DEFINITION: Initial insurance pool.
+
+UNITS: $
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="Travel Distance by Concept">
 				<dimensions>
@@ -32030,6 +32763,13 @@ ELSE 0</eqn>
 				</dimensions>
 				<eqn>SUM(Travel_Distance[*,Concept,*])</eqn>
 				<units>travelermile</units>
+				<doc>DEFINITION: Travel distance.
+
+UNITS: travelermile
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="underwriting available?">
 				<dimensions>
@@ -32039,6 +32779,13 @@ ELSE 0</eqn>
 THEN 1
 ELSE 0</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Indicator that insurance underwriting is available.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="insured by manufacturers?">
 				<dimensions>
@@ -32049,6 +32796,13 @@ AND DELAY(MAX(Concept_Almost_Available[*,Concept]),  phase_in_period) &lt; 0.1
 THEN 1
 ELSE 0</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Indicator that manufacturers insure vehicles.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="insurable?">
 				<dimensions>
@@ -32056,6 +32810,13 @@ ELSE 0</eqn>
 				</dimensions>
 				<eqn>MAX(&quot;insured_by_manufacturers?&quot;[Concept],  &quot;underwriting_available?&quot;[Concept])</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Indicator of whether a vehicle concept is insurable.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<stock name="Insurance Pool">
 				<eqn>initial_insurance_pool</eqn>
@@ -32063,16 +32824,37 @@ ELSE 0</eqn>
 				<outflow>insurance_payouts</outflow>
 				<non_negative/>
 				<units>$</units>
+				<doc>DEFINITION: Insurance pool.
+
+UNITS: $
+
+TYPE: 
+
+COMMENTS: </doc>
 			</stock>
 			<flow name="insurance sales">
 				<eqn>SUM(insurance_sales_by_concept[*])</eqn>
 				<non_negative/>
 				<units>$/year</units>
+				<doc>DEFINITION: Sales of insurance.
+
+UNITS: $/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<flow name="insurance payouts">
 				<eqn>SUM(insurance_payouts_by_concept[*])</eqn>
 				<non_negative/>
 				<units>$/year</units>
+				<doc>DEFINITION: Total insurance payouts.
+
+UNITS: $/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<aux name="actual incident rate">
 				<dimensions>
@@ -32081,6 +32863,13 @@ ELSE 0</eqn>
 				<eqn>incident_rate_expected[Concept]
 * accident_rate_multiplier[Concept]</eqn>
 				<units>incident/vehiclemile</units>
+				<doc>DEFINITION: Accident rate.
+
+UNITS: incident/vehiclemile
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="incident cost">
 				<dimensions>
@@ -32091,6 +32880,13 @@ ELSE 0</eqn>
 (incident_rate_expected[Concept]
 *distance_traveling_vehicles_by_concept)</eqn>
 				<units>$/incident</units>
+				<doc>DEFINITION: Accident cost.
+
+UNITS: $/incident
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="distance traveling travelers by concept">
 				<dimensions>
@@ -32098,6 +32894,13 @@ ELSE 0</eqn>
 				</dimensions>
 				<eqn>SUM(distance_traveling_travelers[*,Concept,*])</eqn>
 				<units>travelermile/year</units>
+				<doc>DEFINITION: Total distance traveled.
+
+UNITS: travelermile/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="insurance payouts by concept">
 				<dimensions>
@@ -32107,9 +32910,15 @@ ELSE 0</eqn>
  * actual_incident_rate[Concept]
  * distance_traveling_vehicles_by_concept[Concept]</eqn>
 				<units>$/year</units>
+				<doc>DEFINITION: Cost of accidents.
+
+UNITS: $/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="insurance cost">
-				<doc>insurers have to have x amount of coverage - need to make explicit</doc>
 				<dimensions>
 					<dim name="Concept"/>
 				</dimensions>
@@ -32123,6 +32932,13 @@ new_technology_multiplier[Concept]
 ELSE
 0</eqn>
 				<units>$/vehicle/year</units>
+				<doc>DEFINITION: Cost of insurance.
+
+UNITS: $/vehicle/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="insurance sales by concept">
 				<dimensions>
@@ -32130,10 +32946,24 @@ ELSE
 				</dimensions>
 				<eqn>insurance_cost[Concept] * Vehicles_by_Concept[Concept]</eqn>
 				<units>$/year</units>
+				<doc>DEFINITION: Sales of insurance.
+
+UNITS: $/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="insurance coverage">
 				<eqn>1.5</eqn>
 				<units>year</units>
+				<doc>DEFINITION: Required coverage for insurance pool.
+
+UNITS: year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="expected payout by concept">
 				<dimensions>
@@ -32150,6 +32980,13 @@ distance_traveling_vehicles_by_concept[Concept]),
 
 0)</eqn>
 				<units>$/year</units>
+				<doc>DEFINITION: Cost of insurance claims.
+
+UNITS: $/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="fuel price">
 				<dimensions>
@@ -32297,6 +33134,13 @@ distance_traveling_vehicles_by_concept[Concept]),
 				</element>
 				<eqn>TIME</eqn>
 				<units>$/gge</units>
+				<doc>DEFINITION: Fuel price.
+
+UNITS: $/gge
+
+TYPE: 
+
+COMMENTS: Approximation curve based on forecast from AEO 2018 (https://www.eia.gov/outlooks/aeo/data/browser/#/?id=12-AEO2018&amp;sourcekey=0)</doc>
 			</aux>
 			<aux name="fuel efficiency base">
 				<dimensions>
@@ -32444,6 +33288,13 @@ distance_traveling_vehicles_by_concept[Concept]),
 				</element>
 				<eqn>TIME</eqn>
 				<units>vehiclemile/gge</units>
+				<doc>DEFINITION: Fuel economy, unadjusted by scenario.
+
+UNITS: vehiclemile/gge
+
+TYPE: 
+
+COMMENTS: Calculated from Transportation Fleet Car and Truck Vehicle Miles Traveled by Type and Technology (https://www.eia.gov/outlooks/aeo/data/browser/#/?id=56-AEO2017&amp;cases=ref2017&amp;sourcekey=0) and Transportation Sector Energy Use by Mode and Type (https://www.eia.gov/outlooks/aeo/data/browser/#/?id=45-AEO2017&amp;cases=ref2017&amp;sourcekey=0).</doc>
 			</aux>
 			<aux name="fuel cost">
 				<dimensions>
@@ -32451,10 +33302,24 @@ distance_traveling_vehicles_by_concept[Concept]),
 				</dimensions>
 				<eqn>fuel_price[Concept] / fuel_efficiency[Concept]</eqn>
 				<units>$/vehiclemile</units>
+				<doc>DEFINITION: Fuel cost.
+
+UNITS: $/vehiclemile
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="infrastructure spend rate">
 				<eqn>5e8</eqn>
 				<units>$/year</units>
+				<doc>DEFINITION: Rate of spending on infrastructure.
+
+UNITS: $/year
+
+TYPE: 
+
+COMMENTS: Financial Data from 2016 APTA Fact Book Appendix A and B (https://www.apta.com/research-technical-resources/transit-statistics/public-transportation-fact-book/)</doc>
 			</aux>
 			<aux name="infrastructure spending allocation">
 				<dimensions>
@@ -32464,6 +33329,13 @@ distance_traveling_vehicles_by_concept[Concept]),
 				<eqn>remaining_value[Cohort,Concept]
 / (SUM(remaining_value[*,*]) + 1)</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Apportionment of infrastructure spending to support concepts.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<stock name="Infrastructure Maturity">
 				<dimensions>
@@ -33973,6 +34845,13 @@ distance_traveling_vehicles_by_concept[Concept]),
 				<inflow>construction</inflow>
 				<non_negative/>
 				<units>maturity</units>
+				<doc>DEFINITION: Infrastructure maturity.
+
+UNITS: maturity
+
+TYPE: 
+
+COMMENTS: </doc>
 			</stock>
 			<aux name="cost of mature infrastructure">
 				<dimensions>
@@ -33981,6 +34860,13 @@ distance_traveling_vehicles_by_concept[Concept]),
 				</dimensions>
 				<eqn>0</eqn>
 				<units>$/maturity</units>
+				<doc>DEFINITION: Cost of fully mature infrastructure.
+
+UNITS: $/maturity
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<flow name="construction">
 				<dimensions>
@@ -33994,6 +34880,13 @@ THEN infrastructure_spending_allocation[Cohort,Concept]
 ELSE 0</eqn>
 				<non_negative/>
 				<units>maturity/year</units>
+				<doc>DEFINITION: Rate of infrastructure construction.
+
+UNITS: maturity/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<aux name="infrastructure effect on time">
 				<dimensions>
@@ -34007,6 +34900,13 @@ ELSE 0</eqn>
 					<ypts>2,1</ypts>
 				</gf>
 				<units>1</units>
+				<doc>DEFINITION: Impact of infrastructure maturity on travel time.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="infrastructure\neffect on distance">
 				<dimensions>
@@ -34020,6 +34920,13 @@ ELSE 0</eqn>
 					<ypts>5,1</ypts>
 				</gf>
 				<units>1</units>
+				<doc>DEFINITION: Impact of infrastructure maturity on travel distance.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="relative value of infrastructure">
 				<dimensions>
@@ -34029,6 +34936,13 @@ ELSE 0</eqn>
 				</dimensions>
 				<eqn>1</eqn>
 				<units>$/maturity</units>
+				<doc>DEFINITION: Prioritization of infrastructure investment.
+
+UNITS: $/maturity
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="remaining value">
 				<dimensions>
@@ -34038,6 +34952,13 @@ ELSE 0</eqn>
 				<eqn>MAX(0,  1 - Infrastructure_Maturity[Cohort,Concept])
 * SUM(relative_value_of_infrastructure[Cohort,Concept,*])</eqn>
 				<units>$</units>
+				<doc>DEFINITION: Funds needed to complete infrastructure maturation.
+
+UNITS: $
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="concept\nshare by cohort calc">
 				<dimensions>
@@ -34048,6 +34969,13 @@ ELSE 0</eqn>
 / 
 cohort_weights[Cohort]</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Initial cohort tendency / cohort weights. 
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="available\nconcept value calc">
 				<dimensions>
@@ -34056,6 +34984,13 @@ cohort_weights[Cohort]</eqn>
 				</dimensions>
 				<eqn>concept_share_by_cohort_calc[Cohort,Concept]</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Relative value of currently available concepts, for purposes of model calibration.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="concept value calc">
 				<dimensions>
@@ -34066,6 +35001,13 @@ cohort_weights[Cohort]</eqn>
 THEN available_concept_value_calc[Cohort,Concept] 
 ELSE 0</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Unnormalized concept share, for purposes of model calibration.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="concept total utility calc">
 				<dimensions>
@@ -34078,6 +35020,13 @@ ELSE 0</eqn>
 
 ELSE 0</eqn>
 				<units>$/traveler/year</units>
+				<doc>DEFINITION: Concept utility, for purposes of model calibration.
+
+UNITS: $/traveler/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="concept utility calc">
 				<dimensions>
@@ -34090,6 +35039,13 @@ fixed_concept_cost[Cohort,Concept]
 -
 SUM(variable_concept_cost[Cohort,Concept,*])*weeks_per_year</eqn>
 				<units>$/traveler/year</units>
+				<doc>DEFINITION: Concept utility without variable costs, for purposes of model calibration.
+
+UNITS: $/traveler/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="value of time">
 				<dimensions>
@@ -34097,10 +35053,24 @@ SUM(variable_concept_cost[Cohort,Concept,*])*weeks_per_year</eqn>
 				</dimensions>
 				<eqn>value_of_time_multiplier[Cohort]*value_of_time_base[Cohort]</eqn>
 				<units>$/travelerhour</units>
+				<doc>DEFINITION: Value of time, modified by time freed during travel.
+
+UNITS: $/travelerhour
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="hours per week">
 				<eqn>7*24</eqn>
 				<units>travelerhour/traveler/week</units>
+				<doc>DEFINITION: Constant for unit conversion.
+
+UNITS: travelerhour/traveler/week
+
+TYPE: 
+
+COMMENTS: Constant</doc>
 			</aux>
 			<aux name="travel time fraction">
 				<dimensions>
@@ -34108,6 +35078,13 @@ SUM(variable_concept_cost[Cohort,Concept,*])*weeks_per_year</eqn>
 				</dimensions>
 				<eqn>travel_time_by_cohort[Cohort]/hours_per_week</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Fraction of week that travelers spend traveling.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="concept share gap">
 				<dimensions>
@@ -34118,6 +35095,13 @@ SUM(variable_concept_cost[Cohort,Concept,*])*weeks_per_year</eqn>
 -
 actual_concept_share2[Cohort,Concept]</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Discrepancy between long-term distribution of concepts and the current distribution.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="value of time multiplier">
 				<dimensions>
@@ -34130,6 +35114,13 @@ actual_concept_share2[Cohort,Concept]</eqn>
 					<ypts>1,1,1.5,3,12,30,100,100,100,100,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000</ypts>
 				</gf>
 				<units>1</units>
+				<doc>DEFINITION: Scenario-specific change in the value of time.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="actual concept share2">
 				<dimensions>
@@ -34139,6 +35130,13 @@ actual_concept_share2[Cohort,Concept]</eqn>
 				<eqn>Concept_Available[Cohort,Concept]
 *desired_concept_share[Cohort,Concept]</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Distribution of concepts, for purposes of model calibration.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="desired concept share">
 				<dimensions>
@@ -34147,6 +35145,13 @@ actual_concept_share2[Cohort,Concept]</eqn>
 				</dimensions>
 				<eqn>concept_value[Cohort,Concept]*1</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Preferred concept share.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="variable concept cost">
 				<dimensions>
@@ -34165,6 +35170,13 @@ actual_concept_share2[Cohort,Concept]</eqn>
   * distance_intensity[Cohort,Concept,Purpose]
     + value_of_time[Cohort] * time_intensity[Cohort,Concept,Purpose] * freed_time_fraction[Concept])</eqn>
 				<units>$/traveler/week</units>
+				<doc>DEFINITION: Variable cost of travel.
+
+UNITS: $/traveler/week
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="fixed concept cost">
 				<dimensions>
@@ -34176,6 +35188,13 @@ actual_concept_share2[Cohort,Concept]</eqn>
 
 + fixed_cost_adder[Concept]</eqn>
 				<units>$/traveler/year</units>
+				<doc>DEFINITION: Overall fixed cost for vehicle concept.
+
+UNITS: $/traveler/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="concept value">
 				<dimensions>
@@ -34188,6 +35207,13 @@ actual_concept_share2[Cohort,Concept]</eqn>
     concept_total_utility[Cohort,Concept]  
 )</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Unnormalized concept share.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="value of time base">
 				<dimensions>
@@ -34195,6 +35221,13 @@ actual_concept_share2[Cohort,Concept]</eqn>
 				</dimensions>
 				<eqn>14</eqn>
 				<units>$/travelerhour</units>
+				<doc>DEFINITION: Value of time, unmodified by time freed during travel.
+
+UNITS: $/travelerhour
+
+TYPE: 
+
+COMMENTS:  Local, personal travel, or all purposes (https://www.transportation.gov/sites/dot.gov/files/docs/BCA%20Resource%20Guide%20-%20November%202016.pdf)</doc>
 			</aux>
 			<aux name="cohort spread">
 				<dimensions>
@@ -34202,6 +35235,13 @@ actual_concept_share2[Cohort,Concept]</eqn>
 				</dimensions>
 				<eqn>2.67e-4</eqn>
 				<units>traveler*year/$</units>
+				<doc>DEFINITION: Utility spread within cohorts.
+
+UNITS: traveler*year/$
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="concept utility">
 				<dimensions>
@@ -35709,6 +36749,13 @@ actual_concept_share2[Cohort,Concept]</eqn>
 					<eqn>0</eqn>
 				</element>
 				<units>$/traveler/year</units>
+				<doc>DEFINITION: Concept utility, without variable costs.
+
+UNITS: $/traveler/year
+
+TYPE: 
+
+COMMENTS: Analysis  of the Whole Traveler (WT) Survey &amp; National Household Travel Survey (NHTS).  See example data-processing notebook.</doc>
 			</aux>
 			<aux name="test">
 				<dimensions>
@@ -35719,6 +36766,13 @@ actual_concept_share2[Cohort,Concept]</eqn>
      *
     concept_total_utility[Cohort,Concept]</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Consistency check.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="concept total utility">
 				<dimensions>
@@ -35731,6 +36785,13 @@ actual_concept_share2[Cohort,Concept]</eqn>
       + concept_utility[Cohort,Concept]
       + added_concept_utility[Cohort, Concept]</eqn>
 				<units>$/traveler/year</units>
+				<doc>DEFINITION: Concept utility, corrected for variable costs.
+
+UNITS: $/traveler/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="freed time fraction">
 				<dimensions>
@@ -35797,6 +36858,13 @@ actual_concept_share2[Cohort,Concept]</eqn>
 					<eqn>-0.2</eqn>
 				</element>
 				<units>1</units>
+				<doc>DEFINITION: Fraction of time freed by driverless vehicle.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<aux name="available concept value">
 				<dimensions>
@@ -35807,6 +36875,13 @@ actual_concept_share2[Cohort,Concept]</eqn>
 THEN concept_value[Cohort,Concept]
 ELSE 0</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Unnormalized concept share for concepts that are currently available. 
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="concept share by cohort">
 				<dimensions>
@@ -35821,6 +36896,13 @@ total_concept_value[Cohort]
 ELSE
 0</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Distribution of concepts.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="total concept value">
 				<dimensions>
@@ -35828,6 +36910,13 @@ ELSE
 				</dimensions>
 				<eqn>SUM(available_concept_value[Cohort,*])</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Unnormalized total value of all concepts.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="cohort tendency">
 				<dimensions>
@@ -35838,10 +36927,24 @@ ELSE
 *
 cohort_weights[Cohort]</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Long-term distribution of concepts.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="cohort tendency check">
 				<eqn>SUM(cohort_tendency[*,*])</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Model self-consistency check for cohort tendency.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="cost by concept">
 				<dimensions>
@@ -35908,6 +37011,13 @@ cohort_weights[Cohort]</eqn>
 					<eqn>cost_other</eqn>
 				</element>
 				<units>$/travelermile</units>
+				<doc>DEFINITION: Cost of vehicle concepts.
+
+UNITS: $/travelermile
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="vehicle deficit normalized">
 				<dimensions>
@@ -35923,6 +37033,13 @@ vehicle_deficit[Cohort,Concept]
 Vehicles[Cohort,Concept]
 ELSE 0</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Relative discrepancy between actual and ideal number of vehicles.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="vehicle requirement target">
 				<dimensions>
@@ -35933,6 +37050,13 @@ ELSE 0</eqn>
 /
 vehicle_capacity_target[Cohort,Concept]</eqn>
 				<units>vehicle</units>
+				<doc>DEFINITION: Ideal distribution of vehicles, for purposes of model self-consistency checking.
+
+UNITS: vehicle
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="vehicle gap target surplus">
 				<dimensions>
@@ -35943,6 +37067,13 @@ vehicle_capacity_target[Cohort,Concept]</eqn>
 -
 vehicle_requirement[Cohort,Concept]</eqn>
 				<units>vehicle</units>
+				<doc>DEFINITION: Discrepancy between actual and ideal number of vehicles, for purposes of model self-consistency checking.
+
+UNITS: vehicle
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="vehicle deficit target">
 				<dimensions>
@@ -35951,6 +37082,13 @@ vehicle_requirement[Cohort,Concept]</eqn>
 				</dimensions>
 				<eqn>MAX(vehicle_gap_target_surplus[Cohort, Concept],  1e-9)</eqn>
 				<units>vehicle</units>
+				<doc>DEFINITION: Discrepancy between actual and idea number of vehicles, for purposes of model self-consistency checking.
+
+UNITS: vehicle
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="vehicle capacity target">
 				<dimensions>
@@ -35959,6 +37097,13 @@ vehicle_requirement[Cohort,Concept]</eqn>
 				</dimensions>
 				<eqn>vehicle_capacity[Cohort,Concept]</eqn>
 				<units>vehiclemile/vehicle/year</units>
+				<doc>DEFINITION: Ideal annual vehicle capacity based on travel demand.
+
+UNITS: vehiclemile/vehicle/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="vehicle deficit\ntarget normalized">
 				<dimensions>
@@ -35974,6 +37119,13 @@ vehicle_deficit_target[Cohort,Concept]
 Vehicles[Cohort,Concept]
 ELSE 0</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Relative discrepancy between actual and ideal number of vehicles, for purposes of model self-consistency checking.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="purpose status by cohort purpose">
 				<dimensions>
@@ -35982,6 +37134,13 @@ ELSE 0</eqn>
 				</dimensions>
 				<eqn>SUM(Purposes[Cohort,*,Purpose])/SUM(Population[Cohort,*])</eqn>
 				<units>purpose/traveler/week</units>
+				<doc>DEFINITION: Distribution of trip purposes.
+
+UNITS: purpose/traveler/week
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="max purpose rate">
 				<dimensions>
@@ -35990,6 +37149,13 @@ ELSE 0</eqn>
 				</dimensions>
 				<eqn>MAX(purpose_status_by_cohort_purpose[*,Purpose])</eqn>
 				<units>purpose/traveler/week</units>
+				<doc>DEFINITION: Rate of most frequent purpose, for purposes of model checking.
+
+UNITS: purpose/traveler/week
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="target purpose rate">
 				<dimensions>
@@ -35998,6 +37164,13 @@ ELSE 0</eqn>
 				</dimensions>
 				<eqn>purpose_tendency[Cohort,Purpose]</eqn>
 				<units>purpose/traveler/week</units>
+				<doc>DEFINITION: Current distribution of trip purposes.
+
+UNITS: purpose/traveler/week
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="initial cohort tendency traveler">
 				<dimensions>
@@ -36005,6 +37178,13 @@ ELSE 0</eqn>
 				</dimensions>
 				<eqn>initial_population*SUM(initial_cohort_tendency[Cohort,*])</eqn>
 				<units>traveler</units>
+				<doc>DEFINITION: Initial distribution of population among cohorts.
+
+UNITS: traveler
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="initial purpose tendency">
 				<dimensions>
@@ -36462,6 +37642,13 @@ ELSE 0</eqn>
 					<eqn>1e-10</eqn>
 				</element>
 				<units>purpose/week</units>
+				<doc>DEFINITION: Initial distribution of trip purposes.
+
+UNITS: purpose/week
+
+TYPE: 
+
+COMMENTS: Analysis  of the Whole Traveler (WT) Survey &amp; National Household Travel Survey (NHTS).  See example data-processing notebook.</doc>
 			</aux>
 			<aux name="fuel cost traveler">
 				<dimensions>
@@ -36470,6 +37657,13 @@ ELSE 0</eqn>
 				</dimensions>
 				<eqn>fuel_cost[Concept]/vehicle_mileage_occupancy[Cohort,Concept]</eqn>
 				<units>$/travelermile</units>
+				<doc>DEFINITION: Fuel cost.
+
+UNITS: $/travelermile
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="vehicle occupancy">
 				<dimensions>
@@ -37977,10 +39171,24 @@ ELSE 0</eqn>
 					<eqn>1</eqn>
 				</element>
 				<units>traveler/vehicle</units>
+				<doc>DEFINITION: Vehicle occupancy, prior to correction for deadhead.
+
+UNITS: traveler/vehicle
+
+TYPE: 
+
+COMMENTS: Analysis  of the Whole Traveler (WT) Survey &amp; National Household Travel Survey (NHTS).  See example data-processing notebook.</doc>
 			</aux>
 			<aux name="market effect on distance">
 				<eqn>1</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Congestion effect on travel distance.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="distance concept weight">
 				<dimensions>
@@ -37993,6 +39201,13 @@ infrastructure_effect_on_distance[Cohort,Concept]
 *
 deadhead_effect_on_distance[Concept]</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Deadhead and occupancy effect on distance.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<flow name="distance traveling vehicles">
 				<dimensions>
@@ -38003,6 +39218,13 @@ deadhead_effect_on_distance[Concept]</eqn>
 				<eqn>total_distance_requirement_vehicles[Cohort,Concept,Purpose]</eqn>
 				<non_negative/>
 				<units>vehiclemile/year</units>
+				<doc>DEFINITION: Annual vehicle-miles.
+
+UNITS: vehiclemile/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<stock name="Travel Distance Vehicles">
 				<dimensions>
@@ -38014,6 +39236,13 @@ deadhead_effect_on_distance[Concept]</eqn>
 				<inflow>distance_traveling_vehicles</inflow>
 				<non_negative/>
 				<units>vehiclemile</units>
+				<doc>DEFINITION: Cumulative vehicle-distance traveled
+
+UNITS: vehiclemile
+
+TYPE: 
+
+COMMENTS: </doc>
 			</stock>
 			<aux name="total distance\nrequirement vehicles">
 				<dimensions>
@@ -38027,6 +39256,13 @@ vehicle_mileage_occupancy[Cohort,Concept]
 *
 distance_concept_weight[Cohort,Concept]</eqn>
 				<units>vehiclemile/year</units>
+				<doc>DEFINITION: Systemwide requirement for vehicle-distance traveled.
+
+UNITS: vehiclemile/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="Travel Distance by\nConcept Vehicles">
 				<dimensions>
@@ -38034,6 +39270,13 @@ distance_concept_weight[Cohort,Concept]</eqn>
 				</dimensions>
 				<eqn>SUM(Travel_Distance_Vehicles[*,Concept,*])</eqn>
 				<units>vehiclemile</units>
+				<doc>DEFINITION: Vehicle distance.
+
+UNITS: vehiclemile
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="distance traveling\nvehicles by concept">
 				<dimensions>
@@ -38041,14 +39284,35 @@ distance_concept_weight[Cohort,Concept]</eqn>
 				</dimensions>
 				<eqn>SUM(distance_traveling_vehicles[*,Concept,*])</eqn>
 				<units>vehiclemile/year</units>
+				<doc>DEFINITION: Total distance driven.
+
+UNITS: vehiclemile/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="one travelermile">
 				<eqn>1</eqn>
 				<units>travelermile/traveler/mile</units>
+				<doc>DEFINITION: Constant for unit conversion.
+
+UNITS: travelermile/traveler/mile
+
+TYPE: 
+
+COMMENTS: Constant</doc>
 			</aux>
 			<aux name="one vehiclemile">
 				<eqn>1</eqn>
 				<units>vehiclemile/vehicle/mile</units>
+				<doc>DEFINITION: Constant for unit conversion.
+
+UNITS: vehiclemile/vehicle/mile
+
+TYPE: 
+
+COMMENTS: Constant</doc>
 			</aux>
 			<aux name="vehicle mileage occupancy">
 				<dimensions>
@@ -38059,6 +39323,13 @@ distance_concept_weight[Cohort,Concept]</eqn>
 * vehicle_occupancy[Cohort,Concept]
 * one_travelermile / one_vehiclemile</eqn>
 				<units>travelermile/vehiclemile</units>
+				<doc>DEFINITION: Vehicle occupancy, corrected for deadhead.
+
+UNITS: travelermile/vehiclemile
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="deadhead effect on distance">
 				<dimensions>
@@ -38125,6 +39396,13 @@ distance_concept_weight[Cohort,Concept]</eqn>
 					<eqn>1</eqn>
 				</element>
 				<units>1</units>
+				<doc>DEFINITION: Effect of deadheading on distance traveled.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: Taxi values calculated from taxi data for NYC and Denver at (http://schallerconsult.com/rideservices/unsustainable.pdf), (http://www.nyc.gov/html/tlc/downloads/pdf/2014_taxicab_fact_book.pdf) and,  (https://media.proquest.com/media/pq/classic/doc/4322373291/fmt/ai/rep/NPDF?_s=CMbNZt2rrBGHB1N7VrPJARuEBaQ%3D).</doc>
 			</aux>
 			<aux name="cohort value of safety multiplier">
 				<dimensions>
@@ -38132,6 +39410,13 @@ distance_concept_weight[Cohort,Concept]</eqn>
 				</dimensions>
 				<eqn>1</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Cohort-specific modification to value of travel safety.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: Scenario Value</doc>
 			</aux>
 			<aux name="safety benefit to choice sector">
 				<dimensions>
@@ -38152,6 +39437,13 @@ cohort_value_of_safety_multiplier[Cohort]
 
 vehicle_mileage_occupancy</eqn>
 				<units>$/travelermile</units>
+				<doc>DEFINITION: Utility of travel safety.
+
+UNITS: $/travelermile
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="new technology multiplier">
 				<dimensions>
@@ -38218,39 +39510,95 @@ vehicle_mileage_occupancy</eqn>
 					<eqn>0</eqn>
 				</element>
 				<units>1</units>
+				<doc>DEFINITION: Insurance surcharge for new vehicle concepts.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: Scenario Value</doc>
 			</aux>
 			<stock name="Strategic Value">
 				<eqn>0</eqn>
 				<non_negative/>
 				<units>$</units>
+				<doc>DEFINITION: Strategic value to manufacturers of R&amp;D for new vehicle concepts.
+
+UNITS: $
+
+TYPE: 
+
+COMMENTS: </doc>
 			</stock>
 			<aux name="CAVs market share anticipated">
 				<eqn>saturation_max
 /
 (1 + (EXP(-saturation_rate*(TIME+outlook_time-saturation_timing))))</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Manufacture-anticipated market share for CAVs.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="saturation rate">
 				<eqn>1</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Anticipated rate of market share growth.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="saturation timing">
 				<eqn>2025</eqn>
 				<units>year</units>
+				<doc>DEFINITION: Typical lag in attaining maximum anticipated market share.
+
+UNITS: year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="saturation max">
 				<eqn>0.9</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Maximum anticipated market share.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="CAVs market share difference">
 				<eqn>actual_CAVs_shares
 -
 CAVs_market_share_anticipated</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Discrepancy between actual and manufacturer-anticipated market share for CAVs.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="actual CAVs shares">
 				<eqn>SUM(actual_vehicle_concept_share[10:16])</eqn>
 				<units>1</units>
+				<doc>DEFINITION: CAVs market share.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="total concept value concept">
 				<dimensions>
@@ -38258,6 +39606,13 @@ CAVs_market_share_anticipated</eqn>
 				</dimensions>
 				<eqn>SUM(available_concept_value[*,Concept])</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Unnormalized total value of all concepts.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="desired concept share 2">
 				<dimensions>
@@ -38271,6 +39626,13 @@ total_concept_value_concept[Concept]
 ELSE
 0</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Ideal concept share, for purposes of model calibration.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="actual vehicle concept share">
 				<dimensions>
@@ -38280,6 +39642,13 @@ ELSE
 /
 SUM(Vehicles[*,*])</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Distribution of vehicle concepts.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="CAVs RD growth rate">
 				<eqn>CAVs_market_share_difference</eqn>
@@ -38289,22 +39658,50 @@ SUM(Vehicles[*,*])</eqn>
 					<ypts>-0.0275,-0.025,-0.0225,-0.02,-0.015,-0.01,0,0.02,0.05,0.09,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.0909,0.04,0.01,0.0024</ypts>
 				</gf>
 				<units>1/year</units>
+				<doc>DEFINITION: Rate at which R&amp;D growth rate changes.
+
+UNITS: 1/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="initial RD fraction of revenue">
 				<eqn>0.0218</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Initial manufacturer R&amp;D relative to revenue.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="RD base">
 				<eqn>initial_RD_fraction_of_revenue
 *
 Revenue_Annual</eqn>
 				<units>$/year</units>
+				<doc>DEFINITION: Base level of manufacturer R&amp;D spending.
+
+UNITS: $/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<stock name="Revenue Annual">
 				<eqn>initial_auto_industry_revenue</eqn>
 				<inflow>revenue_growing</inflow>
 				<non_negative/>
 				<units>$/year</units>
+				<doc>DEFINITION: Annual manufacturing revenue.
+
+UNITS: $/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</stock>
 			<flow name="revenue growing">
 				<eqn>revenue_growth
@@ -38315,40 +39712,96 @@ Revenue_Annual
 /
 one_year</eqn>
 				<units>$/year/year</units>
+				<doc>DEFINITION: Acceleration of manufacturers' revenue.
+
+UNITS: $/year/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<aux name="CAVs revenue share anticipated">
 				<eqn>saturation_max
 /
 (1 + (EXP(-saturation_rate*(TIME-saturation_timing))))</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Anticipated CAVs share of revenue for manufacturers.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="initial auto industry revenue">
 				<eqn>5e12</eqn>
 				<units>$/year</units>
+				<doc>DEFINITION: Initial total vehicle manufacturing revenue.
+
+UNITS: $/year
+
+TYPE: 
+
+COMMENTS: Strategy&amp; Connected Car Study 2015 (https://www.strategyand.pwc.com/media/file/Connected-Car-Study-2015.pdf), Connected car report 2016 (https://www.strategyand.pwc.com/media/file/Connected-car-report-2016.pdf)</doc>
 			</aux>
 			<aux name="initial CAVs revenue">
 				<eqn>3.55e10</eqn>
 				<units>$/year</units>
+				<doc>DEFINITION: Initial manufacturer revenue from CAVs.
+
+UNITS: $/year
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<aux name="outlook time">
 				<eqn>5</eqn>
 				<units>year</units>
+				<doc>DEFINITION: Lookahead time for manufacturers' strategic planning.
+
+UNITS: year
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<aux name="CAVs revenue anticipated">
 				<eqn>Revenue_Annual
 *
 CAVs_revenue_share_anticipated</eqn>
 				<units>$/year</units>
+				<doc>DEFINITION: Anticipated CAVs revenue to manufacturers.
+
+UNITS: $/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<stock name="CAVs RD Budget Annual">
 				<eqn>initial_CAVs_RD_budget</eqn>
 				<inflow>CAVs_RD_growing</inflow>
 				<non_negative/>
 				<units>$/year</units>
+				<doc>DEFINITION: Manufacture R&amp;D budget.
+
+UNITS: $/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</stock>
 			<flow name="CAVs RD growing">
 				<eqn>CAVs_RD_max</eqn>
 				<units>$/year/year</units>
+				<doc>DEFINITION: Acceleration of R&amp;D expenditures.
+
+UNITS: $/year/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<aux name="initial CAVs RD budget">
 				<eqn>initial_CAVs_revenue
@@ -38357,9 +39810,15 @@ CAVs_revenue_share_anticipated</eqn>
 
 initial_RD_fraction_of_revenue</eqn>
 				<units>$/year</units>
+				<doc>DEFINITION: Initial R&amp;D budget for CAVs.
+
+UNITS: $/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="base vehicle price">
-				<doc>https://www.statista.com/statistics/274927/new-vehicle-average-selling-price-in-the-united-states/</doc>
 				<dimensions>
 					<dim name="Concept"/>
 				</dimensions>
@@ -38424,6 +39883,13 @@ initial_RD_fraction_of_revenue</eqn>
 					<eqn>vehicle_price_LDV</eqn>
 				</element>
 				<units>$/vehicle</units>
+				<doc>DEFINITION: Price of vehicle.
+
+UNITS: $/vehicle
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="vehicle price">
 				<dimensions>
@@ -38435,6 +39901,13 @@ initial_RD_fraction_of_revenue</eqn>
 
 base_vehicle_price</eqn>
 				<units>$/vehicle</units>
+				<doc>DEFINITION: Vehicle price.
+
+UNITS: $/vehicle
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="revenue calc by concept">
 				<dimensions>
@@ -38446,10 +39919,24 @@ base_vehicle_price</eqn>
 
 vehicle_price[Concept]</eqn>
 				<units>$/year</units>
+				<doc>DEFINITION: Manufacturers' revenue for a vehicle concept.
+
+UNITS: $/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="revenue total">
 				<eqn>SUM(revenue_calc_by_concept[*])</eqn>
 				<units>$/year</units>
+				<doc>DEFINITION: Total CAVs revenue.
+
+UNITS: $/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="revenue growth">
 				<eqn>(revenue_total - Revenue_Annual)
@@ -38458,6 +39945,13 @@ vehicle_price[Concept]</eqn>
 
 Revenue_Annual</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Relative growth rate of manufacturers' revenue.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="CAVs RD max">
 				<eqn>IF 
@@ -38472,6 +39966,13 @@ CAVs_RD_Budget_Annual
 *
 CAVs_RD_growth_rate</eqn>
 				<units>$/year/year</units>
+				<doc>DEFINITION: Maximum annual R&amp;D expenditure acceleration.
+
+UNITS: $/year/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="CAVs revenue actual">
 				<eqn>SUM(revenue_calc_by_concept[10:16])
@@ -38479,6 +39980,13 @@ CAVs_RD_growth_rate</eqn>
 /
 share_of_global_revenues_US</eqn>
 				<units>$/year</units>
+				<doc>DEFINITION: Actual CAVs revenue to manufacturers.
+
+UNITS: $/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="CAVs revenue percent diff">
 				<eqn>(CAVs_revenue_actual
@@ -38489,15 +39997,24 @@ CAVs_revenue_anticipated)
 
 CAVs_revenue_anticipated</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Discrepancy between actual and anticipated CAVs revenue.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="scaled initial economic safety\nbenefit">
-				<doc>http://library.ctr.utexas.edu/ctr-publications/0-6849-1.pdf
-
-Table 4.8
-
-Economic Costs Saved, 2013$</doc>
 				<eqn>initial_economic_safety_benefits * regional_market</eqn>
 				<units>$/year</units>
+				<doc>DEFINITION: Initial economic safety benefits * regional market factor
+
+UNITS: $/year
+
+TYPE: 
+
+COMMENTS: http://library.ctr.utexas.edu/ctr-publications/0-6849-1.pdf  Table 4.8  Economic Costs Saved, 2013$</doc>
 			</aux>
 			<aux name="initial travel distance">
 				<dimensions>
@@ -38505,6 +40022,13 @@ Economic Costs Saved, 2013$</doc>
 				</dimensions>
 				<eqn>INIT(distance_traveling_vehicles_by_concept[Concept])</eqn>
 				<units>vehiclemile/year</units>
+				<doc>DEFINITION: Initial vehicle distance traveled.
+
+UNITS: vehiclemile/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<stock name="Cumulative Fuel Use">
 				<dimensions>
@@ -38516,6 +40040,13 @@ Economic Costs Saved, 2013$</doc>
 				<inflow>fuel_consumption</inflow>
 				<non_negative/>
 				<units>gge</units>
+				<doc>DEFINITION: Total fuel consumed since the start of the simulation.
+
+UNITS: gge
+
+TYPE: 
+
+COMMENTS: </doc>
 			</stock>
 			<flow name="fuel consumption">
 				<dimensions>
@@ -38528,6 +40059,13 @@ Economic Costs Saved, 2013$</doc>
 fuel_efficiency[Concept]</eqn>
 				<non_negative/>
 				<units>gge/year</units>
+				<doc>DEFINITION: Annual fuel consumed.
+
+UNITS: gge/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<aux name="accident rate multiplier">
 				<dimensions>
@@ -38535,6 +40073,13 @@ fuel_efficiency[Concept]</eqn>
 				</dimensions>
 				<eqn>1</eqn>
 				<units>dmnl</units>
+				<doc>DEFINITION: Scenario-specific modification to accident rate.
+
+UNITS: dmnl
+
+TYPE: 
+
+COMMENTS: Calibration</doc>
 			</aux>
 			<aux name="variable cost adder">
 				<dimensions>
@@ -38542,10 +40087,24 @@ fuel_efficiency[Concept]</eqn>
 				</dimensions>
 				<eqn>0</eqn>
 				<units>$/travelermile</units>
+				<doc>DEFINITION: Scenario-specific adjustment to variable cost of vehicle concept.
+
+UNITS: $/travelermile
+
+TYPE: 
+
+COMMENTS: Calibration</doc>
 			</aux>
 			<aux name="L1 safety benefit share">
 				<eqn>0.55</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Fraction of safety benefit arising from L1 vehicles.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: The University of Texas at Austin Center for Transportation Research - CTR Technical Report 0-6849-1 (https://library.ctr.utexas.edu/ctr-publications/0-6849-1.pdf)</doc>
 			</aux>
 			<aux name="safety benefit by concept">
 				<dimensions>
@@ -38565,14 +40124,35 @@ safety_factor_by_concept[Concept]
 ELSE
 0</eqn>
 				<units>$/vehiclemile</units>
+				<doc>DEFINITION: Safety benefit.
+
+UNITS: $/vehiclemile
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="L4 safety benefit share">
 				<eqn>0.85</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Fraction of safety benefit arising from L4 vehicles.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: The University of Texas at Austin Center for Transportation Research - CTR Technical Report 0-6849-1 (https://library.ctr.utexas.edu/ctr-publications/0-6849-1.pdf)</doc>
 			</aux>
 			<aux name="L0 safety benefit share">
 				<eqn>0.25</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Fraction of safety benefit arising from L0 vehicles. 
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: The University of Texas at Austin Center for Transportation Research - CTR Technical Report 0-6849-1 (https://library.ctr.utexas.edu/ctr-publications/0-6849-1.pdf)</doc>
 			</aux>
 			<aux name="safety factor by concept">
 				<dimensions>
@@ -38639,10 +40219,24 @@ ELSE
 					<eqn>L0_safety_benefit_share</eqn>
 				</element>
 				<units>1</units>
+				<doc>DEFINITION: Relative safety of vehicle concepts.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="initial travel distance total">
 				<eqn>SUM(initial_travel_distance[*])</eqn>
 				<units>vehiclemile/year</units>
+				<doc>DEFINITION: Initial vehicle distance traveled.
+
+UNITS: vehiclemile/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="concept safety multiplier">
 				<dimensions>
@@ -38650,16 +40244,37 @@ ELSE
 				</dimensions>
 				<eqn>1</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Intrinsic safety benefit from CAVs concepts.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: Scenario Value</doc>
 			</aux>
 			<aux name="incidents base">
 				<eqn>5508000</eqn>
 				<units>incident/year</units>
+				<doc>DEFINITION: Unmodified accident rate.
+
+UNITS: incident/year
+
+TYPE: 
+
+COMMENTS: NHTSA</doc>
 			</aux>
 			<aux name="incident rate base">
 				<eqn>incidents_base * regional_market
 /
 initial_travel_distance_total</eqn>
 				<units>incident/vehiclemile</units>
+				<doc>DEFINITION: Unmodified accident rate.
+
+UNITS: incident/vehiclemile
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="incident rate weight">
 				<dimensions>
@@ -38667,6 +40282,13 @@ initial_travel_distance_total</eqn>
 				</dimensions>
 				<eqn>1</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Relative incident rate for vehicle concepts.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: Calibration</doc>
 			</aux>
 			<aux name="incident rate expected">
 				<dimensions>
@@ -38676,14 +40298,35 @@ initial_travel_distance_total</eqn>
 *
 incident_rate_weight[Concept]</eqn>
 				<units>incident/vehiclemile</units>
+				<doc>DEFINITION: Rate of accidents.
+
+UNITS: incident/vehiclemile
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="vehicle price LDV">
 				<eqn>33460</eqn>
 				<units>$/vehicle</units>
+				<doc>DEFINITION: Price of LDVs.
+
+UNITS: $/vehicle
+
+TYPE: 
+
+COMMENTS: L0 max standard vehicle cost is per IRS(https://www.irs.gov/pub/irs-drop/n-16-79.pdf). L1_Cooperative_Adaptive_Cruise_Control, L1_Urban_Eco_Signal_Control, L4_Urban_Freeway_Automated_Driving, L4_Intercity_Automated_Driving,  L4_Automated_Highway taken from (https://www.sciencedirect.com/science/article/pii/S0965856415300628). </doc>
 			</aux>
 			<aux name="vehicle price bus">
 				<eqn>400000</eqn>
 				<units>$/vehicle</units>
+				<doc>DEFINITION: Price of buses.
+
+UNITS: $/vehicle
+
+TYPE: 
+
+COMMENTS: 2016 APTA Fact Book Appendix A Table 26. Average Cost of New Vehicles Delivered by Type (a) (https://www.apta.com/research-technical-resources/transit-statistics/public-transportation-fact-book/)</doc>
 			</aux>
 			<aux name="driver time">
 				<dimensions>
@@ -38693,14 +40336,35 @@ incident_rate_weight[Concept]</eqn>
 *
 driver_time_units</eqn>
 				<units>driverhour/year</units>
+				<doc>DEFINITION: Annual time spent driving.
+
+UNITS: driverhour/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="vehicle price other">
 				<eqn>0</eqn>
 				<units>$/vehicle</units>
+				<doc>DEFINITION: Price of non-vehicular "vehicles".
+
+UNITS: $/vehicle
+
+TYPE: 
+
+COMMENTS: 2016 APTA Fact Book Appendix A Table 26. Average Cost of New Vehicles Delivered by Type (a) (https://www.apta.com/research-technical-resources/transit-statistics/public-transportation-fact-book/)</doc>
 			</aux>
 			<aux name="driver time units">
 				<eqn>1</eqn>
 				<units>(driverhour*travelermile)/(travelerhour*vehiclemile)</units>
+				<doc>DEFINITION: Constant for unit conversion.
+
+UNITS: (driverhour*travelermile)/(travelerhour*vehiclemile)
+
+TYPE: 
+
+COMMENTS: Constant</doc>
 			</aux>
 			<aux name="driver wage">
 				<dimensions>
@@ -38767,6 +40431,13 @@ driver_time_units</eqn>
 					<eqn>0</eqn>
 				</element>
 				<units>$/driverhour</units>
+				<doc>DEFINITION: Wage for taxi and transit drivers.
+
+UNITS: $/driverhour
+
+TYPE: 
+
+COMMENTS: For bus drivers - Bureau of Labor Statistics (https://www.bls.gov/oes/current/oes533021.htm#nat)</doc>
 			</aux>
 			<aux name="driverless savings">
 				<dimensions>
@@ -38776,6 +40447,13 @@ driver_time_units</eqn>
 *
 driver_wage</eqn>
 				<units>$/year</units>
+				<doc>DEFINITION: Wages saved by driverless vehicles.
+
+UNITS: $/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="driverless savings per travelermile">
 				<dimensions>
@@ -38786,22 +40464,57 @@ driver_wage</eqn>
 /
 distance_traveling_travelers_by_concept[Concept]</eqn>
 				<units>$/travelermile</units>
+				<doc>DEFINITION: Wages saved by driverless vehicles.
+
+UNITS: $/travelermile
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="cost of transit base">
 				<eqn>0.746493040949577</eqn>
 				<units>$/travelermile</units>
+				<doc>DEFINITION: Transit fare.
+
+UNITS: $/travelermile
+
+TYPE: 
+
+COMMENTS: https://www.bts.gov</doc>
 			</aux>
 			<aux name="cost of taxi base">
 				<eqn>3.37409995022560</eqn>
 				<units>$/travelermile</units>
+				<doc>DEFINITION: Taxis fare.
+
+UNITS: $/travelermile
+
+TYPE: 
+
+COMMENTS:  (https://www.taxifarefinder.com)</doc>
 			</aux>
 			<aux name="cost other">
 				<eqn>0</eqn>
 				<units>$/travelermile</units>
+				<doc>DEFINITION: Costs for non-vehicular travel or telecommuting.
+
+UNITS: $/travelermile
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<aux name="cost automate hwy">
 				<eqn>0.50</eqn>
 				<units>$/travelermile</units>
+				<doc>DEFINITION: Fee for use of automated highways.
+
+UNITS: $/travelermile
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<aux name="driver savings multiplier">
 				<dimensions>
@@ -38868,6 +40581,13 @@ distance_traveling_travelers_by_concept[Concept]</eqn>
 					<eqn>0</eqn>
 				</element>
 				<units>1</units>
+				<doc>DEFINITION: Scenario-specific adjustment to cost savings of driverless vehicles.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: Scenario Value</doc>
 			</aux>
 			<aux name="cost of travel">
 				<dimensions>
@@ -38879,19 +40599,35 @@ distance_traveling_travelers_by_concept[Concept]</eqn>
 driverless_savings_per_travelermile[Concept], 
 0)</eqn>
 				<units>$/travelermile</units>
+				<doc>DEFINITION: Cost of travel.
+
+UNITS: $/travelermile
+
+TYPE: 
+
+COMMENTS: L0_Transit (http://www.apta.com/resources/statistics/Pages/transitstats.aspx). L0_taxi - assumed 10-mile trip average (https://www.taxifarefinder.com).</doc>
 			</aux>
 			<aux name="scaled initial economic costs">
-				<doc>http://library.ctr.utexas.edu/ctr-publications/0-6849-1.pdf
-
-Table 4.4
-
-Economic Costs, 2013$</doc>
 				<eqn>initial_economic_costs * regional_market</eqn>
 				<units>$/year</units>
+				<doc>DEFINITION: Initial economic costs * regional market factor
+
+UNITS: $/year
+
+TYPE: 
+
+COMMENTS: http://library.ctr.utexas.edu/ctr-publications/0-6849-1.pdf  Table 4.4  Economic Costs, 2013$</doc>
 			</aux>
 			<aux name="base accident cost per mile">
 				<eqn>scaled_initial_economic_costs/initial_travel_distance_total</eqn>
 				<units>$/vehiclemile</units>
+				<doc>DEFINITION: Accident cost per distance.
+
+UNITS: $/vehiclemile
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="concept capital cost increment multiplier">
 				<dimensions>
@@ -38899,6 +40635,13 @@ Economic Costs, 2013$</doc>
 				</dimensions>
 				<eqn>1</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Scenario-specific change in capital cost reduction for vehicles.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: Scenario Value</doc>
 			</aux>
 			<aux name="fixed cost adder">
 				<dimensions>
@@ -38906,35 +40649,82 @@ Economic Costs, 2013$</doc>
 				</dimensions>
 				<eqn>0</eqn>
 				<units>$/traveler/year</units>
+				<doc>DEFINITION: Scenario-specific adjustment to fixed cost for vehicle concept.
+
+UNITS: $/traveler/year
+
+TYPE: 
+
+COMMENTS: Calibration</doc>
 			</aux>
 			<aux name="CAVs RD fraction">
 				<eqn>CAVs_RD_Budget_Annual
 /
 RD_base</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Fraction of completed R&amp;D by manufacturer.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="cost reduction rate max">
 				<eqn>0.05</eqn>
 				<units>1/year</units>
+				<doc>DEFINITION: Maximum rate at which vehicle capital costs can reduce.
+
+UNITS: 1/year
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<aux name="cost reduction rate mid">
 				<eqn>0.2</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Typical rate at which vehicle capital costs reduce.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<aux name="cost reduction rate shape">
 				<eqn>10</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Shape parameter for vehicle-capital-cost-reduction curve.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<aux name="share of global revenues US">
-				<doc>https://www.strategyand.pwc.com/media/file/Innnovation-1000-2015-Auto-industry-findings.pdf
-</doc>
 				<eqn>0.35</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Domestic share of manufacturers' global revenue.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<flow name="CAVs RD spending">
 				<eqn>CAVs_RD_Budget_Annual</eqn>
 				<non_negative/>
 				<units>$/year</units>
+				<doc>DEFINITION: Annual R&amp;D spending.
+
+UNITS: $/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<stock name="Cumulative CAVs RD Expenditures">
 				<eqn>initial_CAVs_RD_budget
@@ -38942,10 +40732,24 @@ RD_base</eqn>
 				<inflow>CAVs_RD_spending</inflow>
 				<non_negative/>
 				<units>$</units>
+				<doc>DEFINITION: Total CAVs R&amp;D.
+
+UNITS: $
+
+TYPE: 
+
+COMMENTS: </doc>
 			</stock>
 			<aux name="CAVs RD expenditure threshold">
 				<eqn>10</eqn>
 				<units>$</units>
+				<doc>DEFINITION: Maximum manufacture R&amp;D needed.
+
+UNITS: $
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<aux name="CAVs RD sufficient">
 				<eqn>IF
@@ -38957,6 +40761,13 @@ THEN
 ELSE
 0</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Indicator of sufficient R&amp;D for CAVs.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<stock name="Approving">
 				<dimensions>
@@ -38969,6 +40780,13 @@ ELSE
 					<len>Approval_Workload</len>
 				</conveyor>
 				<units>1</units>
+				<doc>DEFINITION: In-process regulatory approval.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</stock>
 			<stock name="Approved">
 				<dimensions>
@@ -39037,6 +40855,13 @@ ELSE
 				<inflow>completing_approval</inflow>
 				<non_negative/>
 				<units>1</units>
+				<doc>DEFINITION: Indicator of regulator approval.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</stock>
 			<flow name="completing approval">
 				<dimensions>
@@ -39045,6 +40870,13 @@ ELSE
 				<eqn>0</eqn>
 				<non_negative/>
 				<units>1/year</units>
+				<doc>DEFINITION: Rate at which regulation is approved.
+
+UNITS: 1/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<flow name="starting approval">
 				<dimensions>
@@ -39055,6 +40887,13 @@ ELSE
   ELSE 0</eqn>
 				<non_negative/>
 				<units>1/year</units>
+				<doc>DEFINITION: Rate at which regulatory approval starts.
+
+UNITS: 1/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<aux name="Considering Approval">
 				<dimensions>
@@ -39062,10 +40901,24 @@ ELSE
 				</dimensions>
 				<eqn>Approving[Concept] + Approved[Concept]</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Indicator that regulatory approval is being considered.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="Approval Workload">
 				<eqn>approval_time *(1 + SUM(Approving[*]))</eqn>
 				<units>year</units>
+				<doc>DEFINITION: Number of regulatory approvals in process.
+
+UNITS: year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="requesting approval">
 				<dimensions>
@@ -39073,14 +40926,35 @@ ELSE
 				</dimensions>
 				<eqn>MAX(ready_for_manufacturing[*,Concept]) / one_year</eqn>
 				<units>1/year</units>
+				<doc>DEFINITION: Rate at which regulatory approval proceeds.
+
+UNITS: 1/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="approval time">
 				<eqn>3</eqn>
 				<units>year</units>
+				<doc>DEFINITION: Average time to regulatory approval.
+
+UNITS: year
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<aux name="phase in period">
 				<eqn>3</eqn>
 				<units>Years</units>
+				<doc>DEFINITION: Period over which new vehicle concepts are phased into markets.
+
+UNITS: Years
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<aux name="Concept Available">
 				<dimensions>
@@ -39091,6 +40965,13 @@ ELSE
   THEN 1
   ELSE 0</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Indicator that a concept is available.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<flow name="working on consumer interest">
 				<dimensions>
@@ -39103,10 +40984,24 @@ THEN PULSE(1,  TIME)
 ELSE 0</eqn>
 				<non_negative/>
 				<units>1/year</units>
+				<doc>DEFINITION: Rate at which consumer interest develops.
+
+UNITS: 1/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<aux name="minimum concept share\nfor consumer interest">
 				<eqn>0.001</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Minimum required consumer interest for vehicle concept to become available.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: Modeler Assumption</doc>
 			</aux>
 			<flow name="completing regulatory approval">
 				<dimensions>
@@ -39116,6 +41011,13 @@ ELSE 0</eqn>
 				<eqn>ready_for_availability[Cohort,Concept]</eqn>
 				<non_negative/>
 				<units>1/year</units>
+				<doc>DEFINITION: Rate at which regulatory approval become sufficient for concept availability.
+
+UNITS: 1/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<flow name="working on regulatory approval">
 				<dimensions>
@@ -39127,6 +41029,13 @@ THEN PULSE(Approved[Concept],  TIME)
 ELSE 0</eqn>
 				<non_negative/>
 				<units>1/year</units>
+				<doc>DEFINITION: Rate at which regulatory approval completes.
+
+UNITS: 1/year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</flow>
 			<stock name="Waiting on Regulatory Approval">
 				<dimensions>
@@ -39138,6 +41047,13 @@ ELSE 0</eqn>
 				<outflow>completing_regulatory_approval</outflow>
 				<non_negative/>
 				<units>1</units>
+				<doc>DEFINITION: Indicator that regulatory approval is blocking concept availability.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: </doc>
 			</stock>
 			<aux name="research start">
 				<dimensions>
@@ -39148,6 +41064,13 @@ AND PREVIOUS(SELF, STOPTIME ) = STOPTIME
 THEN TIME
 ELSE PREVIOUS(SELF,  STOPTIME)</eqn>
 				<units>year</units>
+				<doc>DEFINITION: Start of R&amp;D.
+
+UNITS: year
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="minimum vehicles for fair share of insurance costs">
 				<dimensions>
@@ -39156,6 +41079,13 @@ ELSE PREVIOUS(SELF,  STOPTIME)</eqn>
 				<eqn>20 * maximum_vehicles_without_underwriting[Concept]
 * regional_market</eqn>
 				<units>vehicle</units>
+				<doc>DEFINITION: Maximum number of vehicles for cross-subsidization of new vehicle concepts.
+
+UNITS: vehicle
+
+TYPE: 
+
+COMMENTS: Where does the 20* come from?</doc>
 			</aux>
 			<aux name="driver time factor">
 				<dimensions>
@@ -39167,6 +41097,13 @@ ELSE PREVIOUS(SELF,  STOPTIME)</eqn>
 /
 vehicle_mileage_occupancy[Cohort,Concept]</eqn>
 				<units>vehiclemile/year/(travelermile/travelerhour)</units>
+				<doc>DEFINITION: Conversion from annual traveler distance to driver distance.
+
+UNITS: vehiclemile/year/(travelermile/travelerhour)
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="added concept utility">
 				<dimensions>
@@ -39175,6 +41112,13 @@ vehicle_mileage_occupancy[Cohort,Concept]</eqn>
 				</dimensions>
 				<eqn>0</eqn>
 				<units>$/traveler/year</units>
+				<doc>DEFINITION: Utility offset for travel using a particular concept.
+
+UNITS: $/traveler/year
+
+TYPE: 
+
+COMMENTS: Calibration</doc>
 			</aux>
 			<aux name="vehicle occupancy multiplier">
 				<dimensions>
@@ -39183,6 +41127,13 @@ vehicle_mileage_occupancy[Cohort,Concept]</eqn>
 				</dimensions>
 				<eqn>1</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Scenario-specific change in vehicle occupancy.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: Calibration</doc>
 			</aux>
 			<aux name="fuel efficiency multiplier">
 				<dimensions>
@@ -39190,6 +41141,13 @@ vehicle_mileage_occupancy[Cohort,Concept]</eqn>
 				</dimensions>
 				<eqn>1</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Scenario-specific adjustment to fuel economy.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: Scenario Value</doc>
 			</aux>
 			<aux name="fuel efficiency">
 				<dimensions>
@@ -39198,18 +41156,46 @@ vehicle_mileage_occupancy[Cohort,Concept]</eqn>
 				<eqn>fuel_efficiency_multiplier[Concept]
 * fuel_efficiency_base[Concept]</eqn>
 				<units>vehiclemile/gge</units>
+				<doc>DEFINITION: Fuel economy, adjusted by scenario.
+
+UNITS: vehiclemile/gge
+
+TYPE: 
+
+COMMENTS: </doc>
 			</aux>
 			<aux name="regional market">
 				<eqn>1</eqn>
 				<units>1</units>
+				<doc>DEFINITION: Fraction of U.S. total vehicle market for scaling economic effects and, for underwriting, vehicle numbers and driving distances.
+
+UNITS: 1
+
+TYPE: 
+
+COMMENTS: Calibration</doc>
 			</aux>
 			<aux name="initial economic costs">
 				<eqn>170000000000</eqn>
 				<units>$/year</units>
+				<doc>DEFINITION: Initial economic cost of incidents.
+
+UNITS: $/year
+
+TYPE: 
+
+COMMENTS: Calculated from data provided by Victoria Transport Policy Institute (www.vtpi.org)</doc>
 			</aux>
 			<aux name="initial economic\nsafety benefits">
 				<eqn>140000000000</eqn>
 				<units>$/year</units>
+				<doc>DEFINITION: Initial economic benefit of safety.
+
+UNITS: $/year
+
+TYPE: 
+
+COMMENTS: Calculated from data provided by Victoria Transport Policy Institute (www.vtpi.org)</doc>
 			</aux>
 		</variables>
 		<views>
