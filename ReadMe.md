@@ -48,7 +48,7 @@ Non-NREL users of the ``CSG-public`` should not attribute their results to the `
 
 #### Example Reference 
 
-NREL 2019. CAV Scenario Generation Model, Public Version, Release [version number]. National Renewable Energy Laboratory, Golden, Colorado. http://github.com/NREL/CSG-public. doi:10.11578/dc.20191023.2.
+NREL 2019. CAV Scenario Generation Model, Public Version, Release [version number]. National Renewable Energy Laboratory, Golden, Colorado. http://github.com/NREL/CSG-public. http://dx.doi.org/10.11578/dc.20191023.2.
 
 
 ## User Guidance
